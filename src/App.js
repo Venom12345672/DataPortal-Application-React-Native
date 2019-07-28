@@ -1,24 +1,15 @@
-import React, {Component} from 'react';
-import { Image, StyleSheet, View, Text} from 'react-native';
+import React from 'react';
+import { Text, View } from 'react-native';
+import { createBottomTabNavigator, createAppContainer,createStackNavigator } from 'react-navigation';
 
-class App extends Component {
 
-    render() {
-        return (
-            <View style={styles.container}>
-               <Text>Hamzah Baig</Text>
-            </View>
-        );
-    }
-}
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        backgroundColor: '#aa2200',
-    },
-
+export const MainNavigator = createStackNavigator({
+  SplashScreen : {
+      screen: SplashScreen
+  },
+  
 });
 
-export default App
+
+const App = createAppContainer(MainNavigator)
