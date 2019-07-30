@@ -8,7 +8,7 @@ export default class SplashScreen extends React.Component {
   componentDidMount() {
     setTimeout(() => {
       this.setTimePassed();
-    }, 0);
+    }, 1000);
   }
 
   setTimePassed() {

@@ -6,14 +6,16 @@ import { createBottomTabNavigator, createAppContainer,createStackNavigator } fro
 import SplashScreen from './components/SplashScreen'
 import CategoryPage from './components/CategoryPage'
 import SettingsScreen from './components/SettignsScreen'
+import SubCategoryPage from './components/SubCategoryPage'
 
 export const MainStack = createBottomTabNavigator( {
   Home: {
     screen: CategoryPage
   }, 
   Settings: {
-    screen: SettingsScreen
-  }
+    screen: SettingsScreen,
+  },
+  
 })
 
 export const MainNavigator = createStackNavigator({
@@ -28,6 +30,9 @@ export const MainNavigator = createStackNavigator({
     navigationOptions: {
       header: null
     }
+  },
+  SubCategories : {
+    screen : SubCategoryPage,
   }
   
 });

@@ -1,24 +1,29 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
+import ColorScheme from "./ColorScheme";
 const selectColor = index => {
-  if (index % 4 == 0) {
-    return "#90AFC5";
-  } else if (index % 4 == 1) {
-    return "#336B87";
-  } else if (index % 4 == 2) {
-    return "#2A3132";
-  } else if (index % 4 == 3) {
-    return "#763623";
-  }
+  return ColorScheme[index % 4];
 };
-const listItem = props => (
-  <TouchableOpacity>
-    <View style={styles.listItem} backgroundColor={selectColor(props.index)}>
-      <Text style={styles.item}>{props.item.key}</Text>
-    </View>
-  </TouchableOpacity>
-);
+const listItem = props => {
+  let child = null;
+  if (props.color) {
+    child = (
+      <View style={styles.listItem} backgroundColor={props.color}>
+        <Text style={styles.item}>{props.item.key}</Text>
+      </View>
+    );
+  } else {
+    child = (
+      <View style={styles.listItem} backgroundColor={selectColor(props.index)}>
+        <Text style={styles.item}>{props.item.key}</Text>
+      </View>
+    );
+  }
+  return (
+    <TouchableOpacity onPress={props.onItemPressed}>{child}</TouchableOpacity>
+  );
+};
 
 const styles = StyleSheet.create({
   listItem: {

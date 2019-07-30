@@ -1,8 +1,8 @@
 import React from "react";
-import { Text, View, StyleSheet, Image, FlatList } from "react-native";
-import { SearchBar } from "react-native-elements";
+import { View, StyleSheet } from "react-native";
 
 import CategoryList from "./CategoryList";
+import SearchItem from "./SearchItem";
 
 export default class MainScreen extends React.Component {
   state = {
@@ -24,27 +24,19 @@ export default class MainScreen extends React.Component {
     ]
   };
 
-  updateSearch = search => {
-    this.setState({ search });
+  categorySelectedHandler = (key,color) => {
+    this.props.navigation.navigate("SubCategories",{data: key, color: color})
   };
 
   render() {
-    const { search } = this.state;
-
     return (
       <View style={styles.container}>
-        <View style={styles.serachBarContainer}>
-          <SearchBar
-            inputStyle={styles.inputStyling}
-            containerStyle={styles.containerStyling}
-            placeholderTextColor={"#g5g5g5"}
-            placeholder={"Search here"}
-            inputContainerStyle={{ backgroundColor: "white" }}
-            value={search}
-            onChangeText={this.updateSearch}
-          />
-        </View>
-        <CategoryList data={this.state.categoryNames} />
+        <SearchItem />
+        <CategoryList
+          data={this.state.categoryNames}
+          onItemSelected={this.categorySelectedHandler}
+          color = {null}
+        />
       </View>
     );
   }
