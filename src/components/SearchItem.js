@@ -75,11 +75,11 @@ export default class SearchItem extends React.Component {
 const styles = StyleSheet.create({
   mainContainer: {
     height: 70,
-    backgroundColor: "#11366A",
+    backgroundColor: "#01411cff",
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingHorizontal: 5
+    paddingHorizontal: 10
   },
   searchContainer: {
     height: 40,

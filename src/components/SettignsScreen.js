@@ -28,7 +28,7 @@ export default class MainScreen extends React.Component {
 const styles = StyleSheet.create({
   headerStyle: {
     height: 70,
-    backgroundColor: "#11366A"
+    backgroundColor: "#01411cff"
   },
   container: {
     flex: 1,
