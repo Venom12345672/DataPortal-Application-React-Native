@@ -3,6 +3,7 @@ import { View, StyleSheet } from "react-native";
 
 import CategoryList from "./CategoryList";
 import SearchItem from "./SearchItem";
+import { Header } from "react-native-elements";
 
 export default class MainScreen extends React.Component {
   state = {
@@ -21,22 +22,47 @@ export default class MainScreen extends React.Component {
       { key: "Devin" },
       { key: "Devin" },
       { key: "Devin" }
-    ]
+    ],
+    isVisible: false
   };
 
-  categorySelectedHandler = (key,color) => {
-    this.props.navigation.navigate("SubCategories",{data: key, color: color})
+  categorySelectedHandler = (key, color) => {
+    this.props.navigation.navigate("SubCategories", {
+      data: key,
+      color: color
+    });
   };
+
+  renderResults = () => {
+    this.setState({
+      isVisible: !this.state.isVisible
+    });
+  };
+
+  header = (
+    <Header
+      containerStyle={styles.headerStyle}
+      leftComponent={{ icon: "home", color: "#fff" }}
+      centerComponent={{
+        text: "Home",
+        style: { color: "white", fontSize: 24 }
+      }}
+      rightComponent={{ icon: "search", color: "#fff", onPress: this.renderResults }}
+    />
+  );
 
   render() {
     return (
       <View style={styles.container}>
-        <SearchItem />
-        <CategoryList
-          data={this.state.categoryNames}
-          onItemSelected={this.categorySelectedHandler}
-          color = {null}
-        />
+        {/* <SearchItem /> */}
+        {this.state.isVisible ? <SearchItem /> : this.header}
+        <View style={styles.subContainer}>
+          <CategoryList
+            data={this.state.categoryNames}
+            onItemSelected={this.categorySelectedHandler}
+            color={null}
+          />
+        </View>
       </View>
     );
   }
@@ -45,21 +71,13 @@ export default class MainScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 15,
-    alignItems: "center",
-    justifyContent: "flex-start"
+    flexDirection: "column",
+    alignItems: "stretch"
   },
-  serachBarContainer: {
-    width: "100%"
+  subContainer: {
+    padding: 15
   },
-  inputStyling: {
-    backgroundColor: "white",
-    fontSize: 15
-  },
-  containerStyling: {
-    backgroundColor: "white",
-    borderWidth: 1,
-    borderRadius: 5,
-    height: 50
+  headerStyle: {
+    height: 70
   }
 });

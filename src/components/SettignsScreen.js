@@ -1,16 +1,19 @@
 import React from "react";
 import { Text, View, StyleSheet, Dimensions, Image } from "react-native";
 import { Header } from "react-native-elements";
-import { Icon } from 'react-native-elements'
+import { Icon } from "react-native-elements";
 
 export default class MainScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
         <Header
-          outerContainerStyles = {{height: 0}}
-          leftComponent={{ icon: "settings", color: "#fff"}}
-          centerComponent={{ text: "Settings", style: { color: "white", fontSize: 24} }}
+          containerStyle={styles.headerStyle}
+          leftComponent={{ icon: "settings", color: "#fff" }}
+          centerComponent={{
+            text: "Settings",
+            style: { color: "white", fontSize: 24 }
+          }}
         />
         <View style={styles.fontContainer} />
         <View style={styles.colorModeContainer} />
@@ -21,11 +24,13 @@ export default class MainScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  headerStyle: {
+    height: 70,
+  },
   container: {
     flex: 1,
     flexDirection: "column",
     alignItems: "stretch"
-    // justifyContent: "center"
   },
   fontContainer: {
     marginTop: 20,

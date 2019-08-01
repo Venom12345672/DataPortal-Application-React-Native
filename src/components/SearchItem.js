@@ -32,7 +32,8 @@ export default class SearchItem extends React.Component {
 
 const styles = StyleSheet.create({
   serachBarContainer: {
-    width: "100%"
+    width: "100%",
+    padding: 10
   },
   inputStyling: {
     backgroundColor: "white",
