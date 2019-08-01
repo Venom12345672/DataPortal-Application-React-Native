@@ -3,27 +3,29 @@ import { View, StyleSheet } from "react-native";
 
 import CategoryList from "./CategoryList";
 import SearchItem from "./SearchItem";
-import { Header } from "react-native-elements";
+import { Header, SearchBar, Icon } from "react-native-elements";
+import * as Animatable from "react-native-animatable";
 
 export default class MainScreen extends React.Component {
   state = {
     search: "",
     categoryNames: [
       { key: "Devin" },
-      { key: "Devin" },
-      { key: "Devin" },
-      { key: "Devin" },
-      { key: "Devin" },
-      { key: "Devin" },
-      { key: "Devin" },
-      { key: "Devin" },
-      { key: "Devin" },
-      { key: "Devin" },
-      { key: "Devin" },
-      { key: "Devin" },
-      { key: "Devin" }
+      { key: "Alice" },
+      { key: "Hamzah" },
+      { key: "Ramis" },
+      { key: "Rania" },
+      { key: "Ali" },
+      { key: "Maham" },
+      { key: "Minhal" },
+      { key: "Umer" },
+      { key: "George" },
+      { key: "Tayyab" },
+      { key: "Shahzaib" },
+      { key: "Saadi" }
     ],
-    isVisible: false
+    filteredData: [],
+    headerVisible: true
   };
 
   categorySelectedHandler = (key, color) => {
@@ -35,30 +37,57 @@ export default class MainScreen extends React.Component {
 
   renderResults = () => {
     this.setState({
-      isVisible: !this.state.isVisible
+      headerVisible: true,
+      filteredData: []
+    });
+  };
+
+  changeStateHandler = data => {
+    this.setState({
+      filteredData: data
     });
   };
 
   header = (
-    <Header
-      containerStyle={styles.headerStyle}
-      leftComponent={{ icon: "home", color: "#fff" }}
-      centerComponent={{
-        text: "Home",
-        style: { color: "white", fontSize: 24 }
-      }}
-      rightComponent={{ icon: "search", color: "#fff", onPress: this.renderResults }}
-    />
+    <Animatable.View animation="slideInDown" duration={400}>
+      <Header
+        containerStyle={styles.headerStyle}
+        leftComponent={<Icon name="home" color="white" size={35} />}
+        centerComponent={{
+          text: "Home",
+          style: { color: "white", fontSize: 24 }
+        }}
+        rightComponent={
+          <Icon
+            name="search"
+            color="white"
+            size={35}
+            onPress={() => this.setState({ headerVisible: false })}
+          />
+        }
+      />
+    </Animatable.View>
   );
 
+  search = (
+    <SearchItem
+      data={this.state.categoryNames}
+      changeState={this.changeStateHandler}
+      backtoHome={this.renderResults}
+    />
+  );
   render() {
     return (
       <View style={styles.container}>
-        {/* <SearchItem /> */}
-        {this.state.isVisible ? <SearchItem /> : this.header}
+        {this.state.headerVisible ? this.header : this.search}
+
         <View style={styles.subContainer}>
           <CategoryList
-            data={this.state.categoryNames}
+            data={
+              this.state.filteredData.length == 0
+                ? this.state.categoryNames
+                : this.state.filteredData
+            }
             onItemSelected={this.categorySelectedHandler}
             color={null}
           />
@@ -78,6 +107,7 @@ const styles = StyleSheet.create({
     padding: 15
   },
   headerStyle: {
-    height: 70
+    height: 70,
+    backgroundColor: "#11366A"
   }
 });

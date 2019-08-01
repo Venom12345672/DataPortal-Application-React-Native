@@ -1,5 +1,6 @@
 import React from "react";
 import { Text, View, StyleSheet, Dimensions, Image } from "react-native";
+import * as Animatable from "react-native-animatable";
 
 const height = Dimensions.get("window").height;
 const width = Dimensions.get("window").width;
@@ -18,7 +19,10 @@ export default class SplashScreen extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.TriangleShapeCSS} />
-        <View style={styles.textImgContainer}>
+        <Animatable.View
+          animation="slideInRight"
+          style={styles.textImgContainer}
+        >
           <Image
             style={styles.logoIcon}
             source={require("../assets/pkflag.png")}
@@ -26,7 +30,7 @@ export default class SplashScreen extends React.Component {
           <Text style={styles.text}>
             WELCOME TO{"\n\t\t\t"}PAKISTAN{"\n"}DATA PORTAL
           </Text>
-        </View>
+        </Animatable.View>
       </View>
     );
   }
@@ -51,7 +55,7 @@ const styles = StyleSheet.create({
     fontSize: 26,
     bottom: 0,
     color: "#01411cff",
-    marginBottom: 50,
+    marginBottom: 50
   },
   textImgContainer: {
     alignItems: "center",
@@ -63,6 +67,6 @@ const styles = StyleSheet.create({
     bottom: 0,
     width: 150,
     height: 150,
-    marginBottom: 130,
+    marginBottom: 130
   }
 });

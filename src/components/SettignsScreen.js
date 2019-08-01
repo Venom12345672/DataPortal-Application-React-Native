@@ -1,20 +1,22 @@
 import React from "react";
-import { Text, View, StyleSheet, Dimensions, Image } from "react-native";
-import { Header } from "react-native-elements";
-import { Icon } from "react-native-elements";
+import { View, StyleSheet } from "react-native";
+import { Header, Icon } from "react-native-elements";
+import * as Animatable from "react-native-animatable";
 
 export default class MainScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Header
-          containerStyle={styles.headerStyle}
-          leftComponent={{ icon: "settings", color: "#fff" }}
-          centerComponent={{
-            text: "Settings",
-            style: { color: "white", fontSize: 24 }
-          }}
-        />
+        <Animatable.View animation="slideInDown" duration={400}>
+          <Header
+            containerStyle={styles.headerStyle}
+            leftComponent={<Icon name="settings" size={35} color="white" />}
+            centerComponent={{
+              text: "Settings",
+              style: { color: "white", fontSize: 24 }
+            }}
+          />
+        </Animatable.View>
         <View style={styles.fontContainer} />
         <View style={styles.colorModeContainer} />
         <View style={styles.languageChangeContainer} />
@@ -26,6 +28,7 @@ export default class MainScreen extends React.Component {
 const styles = StyleSheet.create({
   headerStyle: {
     height: 70,
+    backgroundColor: "#11366A"
   },
   container: {
     flex: 1,
