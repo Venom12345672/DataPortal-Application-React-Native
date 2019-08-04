@@ -19,7 +19,7 @@ export default class FontAdjuster extends React.Component {
             style={{width:'100%',height:50,alignSelf: 'center',}}
             step={1}
             value={1}
-            max={3}
+            max={4}
             min={0}
             marks={marks}
             minimumTrackTintColor="#01411cff"

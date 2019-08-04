@@ -1,36 +1,96 @@
 import React from "react";
-import { View, StyleSheet, Text } from "react-native";
-import { Slider } from "react-native-elements";
+import { View, StyleSheet } from "react-native";
 
-export default class FontContainer extends React.Component {
+import CategoryList from "./CategoryList";
+import SearchItem from "./SearchItem";
+import { Header, SearchBar, Icon } from "react-native-elements";
+import * as Animatable from "react-native-animatable";
+
+export default class MainScreen extends React.Component {
   state = {
-    value: 20
+    search: "",
+    categoryNames: [
+      { key: "Devin" },
+      { key: "Alice" },
+      { key: "Hamzah" },
+      { key: "Ramis" },
+      { key: "Rania" },
+      { key: "Ali" },
+      { key: "Maham" },
+      { key: "Minhal" },
+      { key: "Umer" },
+      { key: "George" },
+      { key: "Tayyab" },
+      { key: "Shahzaib" },
+      { key: "Saadi" }
+    ],
+    filteredData: [],
+    headerVisible: true
   };
 
+  categorySelectedHandler = (key, color) => {
+    this.props.navigation.navigate("SubCategories", {
+      data: key,
+      color: color
+    });
+  };
+
+  renderResults = () => {
+    this.setState({
+      headerVisible: true,
+      filteredData: []
+    });
+  };
+
+  changeStateHandler = data => {
+    this.setState({
+      filteredData: data
+    });
+  };
+
+  header = (
+    <Animatable.View animation="slideInDown" duration={400}>
+      <Header
+        containerStyle={styles.headerStyle}
+        leftComponent={<Icon name="home" color="white" size={35} />}
+        centerComponent={{
+          text: "Home",
+          style: { color: "white", fontSize: 24 }
+        }}
+        rightComponent={
+          <Icon
+            name="search"
+            color="white"
+            size={35}
+            onPress={() => this.setState({ headerVisible: false })}
+          />
+        }
+      />
+    </Animatable.View>
+  );
+
+  search = (
+    <SearchItem
+      data={this.state.categoryNames}
+      changeState={this.changeStateHandler}
+      backtoHome={this.renderResults}
+    />
+  );
   render() {
     return (
-      <View style={styles.mainContainer}>
-        <Text style={styles.headingStyle}>Font Size </Text>
-        <View style={styles.sliderContainer}>
-          <Slider
-            value={this.state.value}
-            onValueChange={value => this.setState({ value })}
-            thumbTintColor="white"
-            thumbStyle={{ width: 30, height: 30 }}
-            style={{ width: "90%" }}
-            maximumValue={24}
-            minimumValue={18}
-            minimumTrackTintColor="#01411cff"
-            step={1}
+      <View style={styles.container}>
+        {this.state.headerVisible ? this.header : this.search}
+
+        <View style={styles.subContainer}>
+          <CategoryList
+            data={
+              this.state.filteredData.length == 0
+                ? this.state.categoryNames
+                : this.state.filteredData
+            }
+            onItemSelected={this.categorySelectedHandler}
+            color={null}
           />
-          <Text
-            style={{
-              fontSize: this.state.value,
-              fontFamily: "Times New Roman"
-            }}
-          >
-            Lorem Ipsum
-          </Text>
         </View>
       </View>
     );
@@ -38,19 +98,16 @@ export default class FontContainer extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  mainContainer: {
-    marginTop: 20,
-    height: "25%",
-    backgroundColor: "#eee",
-    flexDirection: "column"
-  },
-  headingStyle: {
-    fontWeight: "bold",
-    fontSize: 24,
-    padding: 13
-  },
-  sliderContainer: {
+  container: {
+    flex: 1,
     flexDirection: "column",
-    alignItems: "center"
+    alignItems: "stretch"
+  },
+  subContainer: {
+    padding: 15
+  },
+  headerStyle: {
+    height: 70,
+    backgroundColor: "#01411cff"
   }
 });

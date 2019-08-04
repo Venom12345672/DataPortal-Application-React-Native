@@ -5,7 +5,7 @@ export default class SampleText extends React.Component {
   render() {
     return (
       <View style={styles.borderContainer}>
-        <ScrollView style={{ paddingTop: 10 }}>
+        <ScrollView style={{ paddingTop: 10}}>
           <Text
             style={{ color: "grey", fontSize: this.props.currentSettings[0] }}
           >

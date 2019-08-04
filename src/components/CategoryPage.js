@@ -1,11 +1,11 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Text } from "react-native";
 
 import CategoryList from "./CategoryList";
 import SearchItem from "./SearchItem";
-import { Header, SearchBar, Icon } from "react-native-elements";
+import { Icon } from "react-native-elements";
 import * as Animatable from "react-native-animatable";
-
+import Header from "./Header";
 export default class MainScreen extends React.Component {
   state = {
     search: "",
@@ -51,13 +51,10 @@ export default class MainScreen extends React.Component {
   header = (
     <Animatable.View animation="slideInDown" duration={400}>
       <Header
-        containerStyle={styles.headerStyle}
-        leftComponent={<Icon name="home" color="white" size={35} />}
-        centerComponent={{
-          text: "Home",
-          style: { color: "white", fontSize: 24 }
-        }}
-        rightComponent={
+        leftComponent={
+          <Text style={{ color: "white", fontSize: 24 }}>Home</Text>
+        }
+        rightComponenet={
           <Icon
             name="search"
             color="white"
@@ -105,9 +102,5 @@ const styles = StyleSheet.create({
   },
   subContainer: {
     padding: 15
-  },
-  headerStyle: {
-    height: 70,
-    backgroundColor: "#01411cff"
   }
 });
