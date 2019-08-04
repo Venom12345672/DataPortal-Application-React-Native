@@ -1,9 +1,15 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
-import { Header, Icon } from "react-native-elements";
+import { View, StyleSheet, Text } from "react-native";
+import { Header, Icon, Slider } from "react-native-elements";
 import * as Animatable from "react-native-animatable";
+import FontContainer from "./FontContainer";
+import LightDarkMode from "./LightDarkMode";
 
 export default class MainScreen extends React.Component {
+  fontSettignsHandler = () => {
+    this.props.navigation.navigate("FontSettings");
+  };
+
   render() {
     return (
       <View style={styles.container}>
@@ -17,9 +23,7 @@ export default class MainScreen extends React.Component {
             }}
           />
         </Animatable.View>
-        <View style={styles.fontContainer} />
-        <View style={styles.colorModeContainer} />
-        <View style={styles.languageChangeContainer} />
+        <FontContainer goToFont={this.fontSettignsHandler} />
       </View>
     );
   }
@@ -28,22 +32,13 @@ export default class MainScreen extends React.Component {
 const styles = StyleSheet.create({
   headerStyle: {
     height: 70,
+    width: "100%",
     backgroundColor: "#01411cff"
   },
   container: {
     flex: 1,
     flexDirection: "column",
-    alignItems: "stretch"
-  },
-  fontContainer: {
-    marginTop: 20,
-    height: "25%",
-    backgroundColor: "#eee"
-  },
-  colorModeContainer: {
-    marginTop: 20,
-    height: "25%",
-    backgroundColor: "#eee"
+    alignItems: "center"
   },
   languageChangeContainer: {
     marginTop: 20,
