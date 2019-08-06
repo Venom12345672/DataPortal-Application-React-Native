@@ -2,7 +2,7 @@ import React from "react";
 import { View, StyleSheet, Text } from "react-native";
 import { Icon } from "react-native-elements";
 import * as Animatable from "react-native-animatable";
-import FontContainer from "./FontContainer";
+import SubSettingsContainer from "./SubsSettingsContainer";
 import LightDarkMode from "./LightDarkMode";
 
 import Header from "./Header";
@@ -11,19 +11,31 @@ export default class MainScreen extends React.Component {
     this.props.navigation.navigate("FontSettings");
   };
 
+  changeSettingsHandler = () => {
+    this.props.navigation.navigate("ChangeLanguage");
+  };
+
   render() {
     return (
       <View style={styles.container}>
         <Animatable.View animation="slideInDown" duration={400}>
           <Header
             leftComponent={
-              <Text style={{ color: "white", fontSize: 24 }}>Settings</Text>
+              <Text
+                style={{ color: "white", fontSize: 24, paddingHorizontal: 10 }}
+              >
+                Settings
+              </Text>
             }
             rightComponenet={<Icon name="settings" color="white" size={35} />}
           />
         </Animatable.View>
         <View style={styles.settingsOptionContainer}>
-          <FontContainer goToFont={this.fontSettignsHandler} />
+          <SubSettingsContainer
+            title="Font Size"
+            onPressing={this.fontSettignsHandler}
+          />
+          <SubSettingsContainer title="Content Language" onPressing={this.changeSettingsHandler}/>
         </View>
       </View>
     );
@@ -37,6 +49,7 @@ const styles = StyleSheet.create({
     alignItems: "stretch"
   },
   settingsOptionContainer: {
+    marginTop: 20,
     width: "100%",
     height: "100%",
     flexDirection: "column",

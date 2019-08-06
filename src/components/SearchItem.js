@@ -15,10 +15,11 @@ export default class SearchItem extends React.Component {
     let data = this.props.data;
     let filtering = [];
     if (search != "") {
-      console.log("hamzah");
-      filtering = data.filter(item => item.key.includes(search));
+      filtering = data.filter(item =>
+        item.key.toLowerCase().includes(search.toLowerCase())
+      );
     } else {
-      filtering = [];
+      filtering = null;
     }
     this.props.changeState(filtering);
   };

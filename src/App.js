@@ -12,6 +12,8 @@ import CategoryPage from "./components/CategoryPage";
 import SettingsScreen from "./components/SettignsScreen";
 import SubCategoryPage from "./components/SubCategoryPage";
 import FontSettings from "./components/FontSettings";
+import ChangeLanguage from "./components/ChangeLanguage"
+
 export const MainStack = createBottomTabNavigator({
   Home: {
     screen: CategoryPage
@@ -46,7 +48,17 @@ export const MainNavigator = createStackNavigator({
       },
       headerTintColor: "white"
     }
-  }
+  },
+  ChangeLanguage: {
+    screen: ChangeLanguage,
+    navigationOptions: {
+      title: "Content Language",
+      headerStyle: {
+        backgroundColor: "#01411cff"
+      },
+      headerTintColor: "white"
+    }
+  },
 });
 
 const App = createAppContainer(MainNavigator);

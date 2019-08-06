@@ -43,23 +43,23 @@ export default class MainScreen extends React.Component {
   };
 
   changeStateHandler = data => {
-    this.setState({
-      filteredData: data
-    });
+    this.setState({filteredData: data})
   };
 
   header = (
     <Animatable.View animation="slideInDown" duration={400}>
       <Header
         leftComponent={
-          <Text style={{ color: "white", fontSize: 24 }}>Home</Text>
+          <Text style={{ paddingHorizontal: 10, color: "white", fontSize: 24 }}>
+            Home
+          </Text>
         }
         rightComponenet={
           <Icon
             name="search"
             color="white"
             size={35}
-            onPress={() => this.setState({ headerVisible: false })}
+            onPress={() => this.setState({ headerVisible: false,  })}
           />
         }
       />
@@ -81,9 +81,8 @@ export default class MainScreen extends React.Component {
         <View style={styles.subContainer}>
           <CategoryList
             data={
-              this.state.filteredData.length == 0
-                ? this.state.categoryNames
-                : this.state.filteredData
+              this.state.headerVisible ?
+                this.state.categoryNames : this.state.filteredData
             }
             onItemSelected={this.categorySelectedHandler}
             color={null}
