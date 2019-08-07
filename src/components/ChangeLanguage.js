@@ -19,10 +19,13 @@ export default class ChangeLanguage extends React.Component {
   restartValues = value => {
     Settings.language = value;
     Settings.fontSliderValue = 1;
+    Settings.lineHeightSliderValue = 1
     if (value == "english") {
       Settings.currentSettingsEnglish = Settings.defaultEnglishSettings;
+      Settings.currentLineHeightEnglish = Settings.defaultLineHeightEnglish
     } else if (value == "urdu") {
       Settings.currentSettingsUrdu = Settings.defaultUrduSettings;
+      Settings.currentLineHeightUrdu = Settings.defaultLineHeightUrdu
     }
   };
 
@@ -33,11 +36,13 @@ export default class ChangeLanguage extends React.Component {
   render() {
     return (
       <Fragment>
-        <View style={{ height: "80%", width: "100%", alignItems: "center" }}>
+        <View style={styles.container}>
           {this.state.textVisible ? (
-            <Animatable.View animation="slideInDown" duration={600}>
-              <SampleText />
-            </Animatable.View>
+            <View style={styles.borderContainer}>
+              <Animatable.View animation="slideInDown" duration={600}>
+                <SampleText />
+              </Animatable.View>
+            </View>
           ) : null}
           <View style={styles.languageContainer}>
             <RadioButton
@@ -61,18 +66,25 @@ export default class ChangeLanguage extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    height: "100%",
+    width: "100%",
     flexDirection: "column",
-    alignItems: "center",
-    height: "100%"
+    alignItems: "center"
   },
   languageContainer: {
-    height: "100%",
+    height: "20%",
     width: "90%",
     backgroundColor: "white",
     borderTopWidth: 1,
     borderTopColor: "#e4e4e4",
-    flexDirection: "column",
-    alignItems: "center"
+  },
+  borderContainer: {
+    width: "90%",
+    height: "80%",
+    marginTop: 20,
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
+    borderBottomColor: "#e4e4e4",
+    borderTopColor: "#e4e4e4"
   }
 });

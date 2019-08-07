@@ -1,28 +1,38 @@
 import React from "react";
 import { Text, View, StyleSheet } from "react-native";
-import GestureRecognizer, {
-  swipeDirections
-} from "react-native-swipe-gestures";
+import Carousel from "react-native-carousel-view";
 
 import SampleText from "./SampleText";
 import FontAdjuster from "./FontAdjuster";
+import LineHeight from "./LineHeight";
 import Settings from "./settings.json";
 export default class FontSettings extends React.Component {
   state = {
     currentSettings: [],
-    fontSliderValue: 1
+    currentLineHeight: 0,
+    fontSliderValue: 1,
+    lineHeightValue: 1
   };
 
   componentDidMount() {
     data = null;
+    data2 = null;
     if (Settings.language == "english") {
       data = Settings.currentSettingsEnglish;
+      data2 = Settings.currentLineHeightEnglish;
     } else if (Settings.language == "urdu") {
       data = Settings.currentSettingsUrdu;
     }
     value = Settings.fontSliderValue;
-    this.setState({ currentSettings: data, fontSliderValue: value });
+    value2 = Settings.lineHeightSliderValue;
+    this.setState({
+      currentSettings: data,
+      currentLineHeight: data2,
+      fontSliderValue: value,
+      lineHeightValue: value2
+    });
   }
+
   fontChnageHandler = cond => {
     data = null;
     if (Settings.language == "english") {
@@ -39,14 +49,51 @@ export default class FontSettings extends React.Component {
     });
   };
 
+  lineHeightChangeHandler = cond => {
+    data = null;
+    if (Settings.language == "english") {
+      data = Settings.lineHeightEnglish[cond];
+      Settings.currentLineHeightEnglish = data;
+    } else if (Settings.language == "urdu") {
+      data = Settings.lineHeighturdu[cond]; 
+      Settings.currentLineHeightUrdu = data; 
+    }
+    Settings.lineHeightSliderValue = cond;
+    this.setState({
+      currentLineHeight: data,
+      lineHeightValue: cond
+    });
+  };
+
   render() {
     return (
       <View style={styles.container}>
-        <SampleText />
-        <FontAdjuster
-          fontChange={this.fontChnageHandler}
-          sliderValue={this.state.fontSliderValue}
-        />
+        <View style={styles.borderContainer}>
+          <SampleText />
+        </View>
+        <View style={styles.fontBorderContainer}>
+          <Carousel
+            width={370}
+            height={75}
+            indicatorAtBottom={true}
+            indicatorSize={12}
+            animate={false}
+          >
+            <FontAdjuster
+              fontChange={this.fontChnageHandler}
+              sliderValue={this.state.fontSliderValue}
+            />
+            <LineHeight
+              lineHeightChange={this.lineHeightChangeHandler}
+              sliderValue={this.state.lineHeightValue}
+            />
+          </Carousel>
+        </View>
+        <View>
+          <Text style={{ fontSize: 14, color: "grey", paddingTop: 15 }}>
+            Move the slider to adjust the font size and lineHeight.
+          </Text>
+        </View>
       </View>
     );
   }
@@ -58,6 +105,31 @@ const styles = StyleSheet.create({
     width: "100%",
     flexDirection: "column",
     alignItems: "center"
+  },
+  contentContainer: {
+    borderWidth: 2,
+    borderColor: "#CCC",
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  borderContainer: {
+    width: "90%",
+    height: "80%",
+    marginTop: 20,
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
+    borderBottomColor: "#e4e4e4",
+    borderTopColor: "#e4e4e4"
+  },
+  fontBorderContainer: {
+    width: "90%",
+    height: "10%"
+  },
+  descriptionContainer: {
+    width: "100%",
+    height: "10%",
+    paddingTop: 5
   },
   contentContainer: {
     borderWidth: 2,

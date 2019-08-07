@@ -24,7 +24,7 @@ export default class RadioButton extends React.Component {
 
 const styles = StyleSheet.create({
   mainContainer: {
-    height: "10%",
+    height: "40%",
     width: "100%",
     backgroundColor: "white",
     flexDirection: "row",
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     height: 12,
     width: 12,
     borderRadius: 6,
-    backgroundColor: "#000"
+    backgroundColor: "#01411cff"
   },
   headingStyle: {
     fontSize: 16

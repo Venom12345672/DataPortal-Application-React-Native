@@ -2,7 +2,7 @@ import React from "react";
 import { Text, View, StyleSheet, Slider } from "react-native";
 import MarkSlider from "react-native-mark-slider";
 import Settings from "./settings.json";
-export default class FontAdjuster extends React.Component {
+export default class LineHeight extends React.Component {
   render() {
     const marks = [
       { name: "Small", value: 0 },
@@ -16,13 +16,13 @@ export default class FontAdjuster extends React.Component {
         <MarkSlider
           style={{ width: "100%", height: 50, alignSelf: "center" }}
           step={1}
-          value={Settings.fontSliderValue}
+          value={Settings.lineHeightSliderValue}
           max={4}
           min={0}
           marks={marks}
           minimumTrackTintColor="#01411cff"
           maximumTrackTintColor="grey"
-          onChange={this.props.fontChange}
+          onChange={this.props.lineHeightChange}
         />
       </View>
     );

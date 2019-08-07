@@ -6,6 +6,8 @@
         [16, 18, 22, 28],
         [17, 19, 23, 29]
       ],
+      "lineHeightEnglish" : [23,25,27,29,31],
+      "lineHeighturdu" : [28,30,32,34,36],
       "fontSizeUrdu": [
           [31,21],
           [32,22],
@@ -14,9 +16,14 @@
           [35,25]
       ],
       "currentSettingsEnglish" : [14, 16, 20, 26],
+      "currentLineHeightEnglish": 25,
+      "currentLineHeightUrdu" : 30,
       "currentSettingsUrdu" : [32,22],
-      "language" : "english",
+      "language" : "urdu",
       "fontSliderValue" : 1,
+      "lineHeightSliderValue" : 1,
       "defaultEnglishSettings" : [14, 16, 20, 26],
-      "defaultUrduSettings" :[32,22]
+      "defaultUrduSettings" :[32,22],
+      "defaultLineHeightEnglish" : 25,
+      "defaultLineHeightUrdu" : 30
 }
