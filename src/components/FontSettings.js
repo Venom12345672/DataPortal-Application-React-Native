@@ -1,5 +1,8 @@
 import React from "react";
 import { Text, View, StyleSheet } from "react-native";
+import GestureRecognizer, {
+  swipeDirections
+} from "react-native-swipe-gestures";
 
 import SampleText from "./SampleText";
 import FontAdjuster from "./FontAdjuster";
@@ -11,7 +14,7 @@ export default class FontSettings extends React.Component {
   };
 
   componentDidMount() {
-    data = null
+    data = null;
     if (Settings.language == "english") {
       data = Settings.currentSettingsEnglish;
     } else if (Settings.language == "urdu") {
@@ -21,15 +24,15 @@ export default class FontSettings extends React.Component {
     this.setState({ currentSettings: data, fontSliderValue: value });
   }
   fontChnageHandler = cond => {
-    data = null
+    data = null;
     if (Settings.language == "english") {
       data = Settings.fontSizeEnglish[cond];
-      Settings.currentSettingsEnglish = data
+      Settings.currentSettingsEnglish = data;
     } else if (Settings.language == "urdu") {
       data = Settings.fontSizeUrdu[cond];
-      Settings.currentSettingsUrdu = data
+      Settings.currentSettingsUrdu = data;
     }
-    Settings.fontSliderValue = cond
+    Settings.fontSliderValue = cond;
     this.setState({
       currentSettings: data,
       fontSliderValue: cond
@@ -54,6 +57,13 @@ const styles = StyleSheet.create({
     height: "100%",
     width: "100%",
     flexDirection: "column",
+    alignItems: "center"
+  },
+  contentContainer: {
+    borderWidth: 2,
+    borderColor: "#CCC",
+    flex: 1,
+    justifyContent: "center",
     alignItems: "center"
   }
 });

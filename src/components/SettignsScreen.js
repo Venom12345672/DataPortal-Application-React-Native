@@ -3,7 +3,6 @@ import { View, StyleSheet, Text } from "react-native";
 import { Icon } from "react-native-elements";
 import * as Animatable from "react-native-animatable";
 import SubSettingsContainer from "./SubsSettingsContainer";
-import LightDarkMode from "./LightDarkMode";
 
 import Header from "./Header";
 export default class MainScreen extends React.Component {
