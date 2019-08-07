@@ -11,19 +11,31 @@ export default class FontSettings extends React.Component {
   };
 
   componentDidMount() {
-    data = Settings.currentSettings;
+    data = null
+    if (Settings.language == "english") {
+      data = Settings.currentSettingsEnglish;
+    } else if (Settings.language == "urdu") {
+      data = Settings.currentSettingsUrdu;
+    }
     value = Settings.fontSliderValue;
     this.setState({ currentSettings: data, fontSliderValue: value });
   }
   fontChnageHandler = cond => {
-    Settings.currentSettings = Settings.fontSize[cond];
-    Settings.fontSliderValue = cond;
+    data = null
+    if (Settings.language == "english") {
+      data = Settings.fontSizeEnglish[cond];
+      Settings.currentSettingsEnglish = data
+    } else if (Settings.language == "urdu") {
+      data = Settings.fontSizeUrdu[cond];
+      Settings.currentSettingsUrdu = data
+    }
+    Settings.fontSliderValue = cond
     this.setState({
-      currentSettings: Settings.fontSize[cond],
+      currentSettings: data,
       fontSliderValue: cond
     });
   };
-  
+
   render() {
     return (
       <View style={styles.container}>

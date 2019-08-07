@@ -3,15 +3,32 @@ import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import * as Animatable from "react-native-animatable";
 
 import SampleText from "./SampleText";
+
 import RadioButton from "./RadioButton";
+import Settings from "./settings.json";
 export default class ChangeLanguage extends React.Component {
   state = {
     textVisible: false,
-    selected: "first"
+    selected: ""
+  };
+  componentDidMount() {
+    value = Settings.language;
+    this.setState({ selected: value });
+  }
+
+  restartValues = value => {
+    Settings.language = value;
+    Settings.fontSliderValue = 1;
+    if (value == "english") {
+      Settings.currentSettingsEnglish = Settings.defaultEnglishSettings;
+    } else if (value == "urdu") {
+      Settings.currentSettingsUrdu = Settings.defaultUrduSettings;
+    }
   };
 
   radioButtonHandler = value => {
-    this.setState({ selected: value, textVisible: true});
+    this.restartValues(value);
+    this.setState({ selected: value, textVisible: true });
   };
   render() {
     return (
@@ -24,13 +41,13 @@ export default class ChangeLanguage extends React.Component {
           ) : null}
           <View style={styles.languageContainer}>
             <RadioButton
-              value="first"
+              value="english"
               selected={this.state.selected}
               title="English"
               selectionHandler={this.radioButtonHandler}
             />
             <RadioButton
-              value="second"
+              value="urdu"
               selected={this.state.selected}
               title="Urdu"
               selectionHandler={this.radioButtonHandler}
@@ -56,6 +73,6 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderTopColor: "#e4e4e4",
     flexDirection: "column",
-    alignItems: "center",
+    alignItems: "center"
   }
 });

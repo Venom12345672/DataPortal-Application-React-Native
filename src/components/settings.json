@@ -1,11 +1,22 @@
 {
-    "fontSize": [
+    "fontSizeEnglish": [
         [13, 15, 19, 25],
         [14, 16, 20, 26],
         [15, 17, 21, 27],
         [16, 18, 22, 28],
         [17, 19, 23, 29]
       ],
-      "currentSettings" : [14, 16, 20, 26],
-      "fontSliderValue" : 1
+      "fontSizeUrdu": [
+          [31,21],
+          [32,22],
+          [33,23],
+          [34,24],
+          [35,25]
+      ],
+      "currentSettingsEnglish" : [14, 16, 20, 26],
+      "currentSettingsUrdu" : [32,22],
+      "language" : "urdu",
+      "fontSliderValue" : 1,
+      "defaultEnglishSettings" : [14, 16, 20, 26],
+      "defaultUrduSettings" :[32,22]
 }

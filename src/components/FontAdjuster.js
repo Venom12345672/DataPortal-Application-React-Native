@@ -17,7 +17,7 @@ export default class FontAdjuster extends React.Component {
           <MarkSlider
             style={{width:'100%',height:50,alignSelf: 'center',}}
             step={1}
-            value={this.props.sliderValue}
+            value={Settings.fontSliderValue}
             max={4}
             min={0}
             marks={marks}
