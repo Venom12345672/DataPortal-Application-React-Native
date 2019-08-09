@@ -39,7 +39,7 @@ export default class ChangeLanguage extends React.Component {
         <View style={styles.container}>
           {this.state.textVisible ? (
             <View style={styles.borderContainer}>
-              <Animatable.View animation="slideInDown" duration={600}>
+              <Animatable.View animation="slideInDown" duration={1000}>
                 <SampleText />
               </Animatable.View>
             </View>
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   languageContainer: {
-    height: "20%",
+    height: "22%",
     width: "90%",
     backgroundColor: "white",
     borderTopWidth: 1,
@@ -80,8 +80,8 @@ const styles = StyleSheet.create({
   },
   borderContainer: {
     width: "90%",
-    height: "80%",
-    marginTop: 20,
+    height: "78%",
+    marginTop: 10,
     borderTopWidth: 1,
     borderBottomWidth: 1,
     borderBottomColor: "#e4e4e4",

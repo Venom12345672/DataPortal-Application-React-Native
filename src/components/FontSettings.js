@@ -55,8 +55,8 @@ export default class FontSettings extends React.Component {
       data = Settings.lineHeightEnglish[cond];
       Settings.currentLineHeightEnglish = data;
     } else if (Settings.language == "urdu") {
-      data = Settings.lineHeighturdu[cond]; 
-      Settings.currentLineHeightUrdu = data; 
+      data = Settings.lineHeighturdu[cond];
+      Settings.currentLineHeightUrdu = data;
     }
     Settings.lineHeightSliderValue = cond;
     this.setState({
@@ -73,8 +73,8 @@ export default class FontSettings extends React.Component {
         </View>
         <View style={styles.fontBorderContainer}>
           <Carousel
-            width={370}
-            height={75}
+            width={340}
+            height={100}
             indicatorAtBottom={true}
             indicatorSize={12}
             animate={false}
@@ -89,9 +89,9 @@ export default class FontSettings extends React.Component {
             />
           </Carousel>
         </View>
-        <View>
-          <Text style={{ fontSize: 14, color: "grey", paddingTop: 15 }}>
-            Move the slider to adjust the font size and lineHeight.
+        <View style={styles.descriptionContainer}>
+          <Text style={{ fontSize: 14, color: "grey"}}>
+            Move the slider to adjust the font size.
           </Text>
         </View>
       </View>
@@ -115,8 +115,8 @@ const styles = StyleSheet.create({
   },
   borderContainer: {
     width: "90%",
-    height: "80%",
-    marginTop: 20,
+    height: "78%",
+    marginTop: 10,
     borderTopWidth: 1,
     borderBottomWidth: 1,
     borderBottomColor: "#e4e4e4",
@@ -124,12 +124,11 @@ const styles = StyleSheet.create({
   },
   fontBorderContainer: {
     width: "90%",
-    height: "10%"
+    height: "17%"
   },
   descriptionContainer: {
-    width: "100%",
-    height: "10%",
-    paddingTop: 5
+    width: "90%",
+    height: "5%",
   },
   contentContainer: {
     borderWidth: 2,

@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     alignItems: "stretch"
   },
   settingsOptionContainer: {
-    marginTop: 20,
+    marginTop: 10,
     width: "100%",
     height: "100%",
     flexDirection: "column",

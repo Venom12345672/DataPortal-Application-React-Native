@@ -27,6 +27,8 @@ export default class SampleText extends React.Component {
         <Text
           style={{
             color: "grey",
+            textAlign: "justify",
+
             fontSize: Settings.currentSettingsEnglish[0],
             lineHeight: Settings.currentLineHeightEnglish
           }}
@@ -38,6 +40,8 @@ export default class SampleText extends React.Component {
           style={{
             fontWeight: "bold",
             paddingTop: 5,
+            textAlign: "justify",
+
             fontSize: Settings.currentSettingsEnglish[3],
             lineHeight: Settings.currentLineHeightEnglish
           }}
@@ -46,6 +50,8 @@ export default class SampleText extends React.Component {
         </Text>
         <Text
           style={{
+            textAlign: "justify",
+
             fontSize: Settings.currentSettingsEnglish[2],
             lineHeight: Settings.currentLineHeightEnglish
           }}
@@ -54,6 +60,7 @@ export default class SampleText extends React.Component {
         </Text>
         <Text
           style={{
+            textAlign: "justify",
             fontSize: Settings.currentSettingsEnglish[1],
             lineHeight: Settings.currentLineHeightEnglish
           }}
