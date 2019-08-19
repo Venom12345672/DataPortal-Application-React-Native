@@ -14,6 +14,8 @@ import SubCategoryPage from "./components/SubCategoryPage";
 import FontSettings from "./components/FontSettings";
 import ChangeLanguage from "./components/ChangeLanguage";
 import Section1 from "./components/Section1";
+import Section2 from "./components/Section2";
+
 export const MainStack = createBottomTabNavigator({
   Home: {
     screen: CategoryPage
@@ -37,7 +39,13 @@ export const MainNavigator = createStackNavigator({
     }
   },
   SubCategories: {
-    screen: SubCategoryPage
+    screen: SubCategoryPage,
+    navigationOptions: {
+      headerStyle: {
+        backgroundColor: "#01411cff"
+      },
+      headerTintColor: "white"
+    }
   },
   FontSettings: {
     screen: FontSettings,
@@ -60,7 +68,24 @@ export const MainNavigator = createStackNavigator({
     }
   },
   Section1: {
-    screen: Section1
+    screen: Section1,
+    navigationOptions: {
+      title: "Section 1",
+      headerStyle: {
+        backgroundColor: "#01411cff"
+      },
+      headerTintColor: "white"
+    }
+  },
+  Section2: {
+    screen: Section2,
+    navigationOptions: {
+      title: "Section 2",
+      headerStyle: {
+        backgroundColor: "#01411cff"
+      },
+      headerTintColor: "white"
+    }
   }
 });
 

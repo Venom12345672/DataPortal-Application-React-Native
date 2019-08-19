@@ -26,7 +26,7 @@ export default class SubCategoryPage extends React.Component {
   };
 
   categorySelectedHandler = key => {
-    this.props.navigation.navigate("Section1")
+    this.props.navigation.navigate("Section2")
   };
 
   render() {
