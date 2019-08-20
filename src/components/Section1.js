@@ -12,15 +12,83 @@ import {
 const phone_width = Dimensions.get("window").width;
 
 import Carousel from "react-native-carousel-view";
+import ToggleSwitch from "toggle-switch-react-native";
+import { sectionStyles } from "./SectionStyling";
+import Icon from "react-native-vector-icons/Foundation";
 
 export default class Section1 extends React.Component {
+  state = {
+    nightMode: false
+  };
+
+  static navigationOptions = ({ navigation }) => {
+    console.log(navigation.state);
+    return {
+      headerRight: (
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            paddingHorizontal: 10
+          }}
+        >
+          <View style={{ paddingRight: 5 }}>
+            <Icon
+              name="contrast"
+              size={30}
+              color={navigation.getParam("nightMode") ? "black" : "white"}
+            />
+          </View>
+          <ToggleSwitch
+            isOn={navigation.getParam("nightMode")}
+            onColor="green"
+            labelStyle={{ color: "black", fontWeight: "900" }}
+            onToggle={navigation.getParam("ToggleSwitch")}
+          />
+        </View>
+      )
+    };
+  };
+  componentDidMount() {
+    this.props.navigation.setParams({ ToggleSwitch: this._toggleSwitch });
+    this.props.navigation.setParams({ nightMode: this.state.nightMode });
+  }
+
+  _toggleSwitch = () => {
+    this.setState({ nightMode: !this.state.nightMode });
+    this.props.navigation.setParams({ nightMode: !this.state.nightMode });
+  };
   render() {
     return (
-      <View style={styles.mainContainer}>
+      <View
+        style={
+          this.state.nightMode
+            ? sectionStyles.mainContainerN
+            : sectionStyles.mainContainerL
+        }
+      >
         <ScrollView>
-          <View style={{ paddingHorizontal: 20 }}>
-            <Text style={styles.headingStyle}>Signs in Autistic Children</Text>
-            <Text style={styles.contentTextStyle}>
+          <View
+            style={{
+             paddingHorizontal: 20
+            }}
+          >
+            <Text
+              style={
+                this.state.nightMode
+                  ? sectionStyles.headingStyleN
+                  : sectionStyles.headingStyleL
+              }
+            >
+              Signs in Autistic Children
+            </Text>
+            <Text
+              style={
+                this.state.nightMode
+                  ? sectionStyles.contentTextStyleN
+                  : sectionStyles.contentTextStyleL
+              }
+            >
               Autsim, or autsim spectrum disorder (ASD), refers to a broad range
               of conditions characterized by challenges with social skills,
               repetitive behaviors, speech and nonverbal communcitaion.
@@ -48,14 +116,20 @@ export default class Section1 extends React.Component {
                 <ImageBackground style={{ backgroundColor: "grey" }} />
               </Carousel>
             </View>
-            <Text style={styles.descriptionStyle}>
+            <Text style={sectionStyles.descriptionStyle}>
               "If you've met one person with autism, you've met one person with
               autism"
             </Text>
-            <Text style={styles.contentTextStyle}>
-              {"\n\n"}Autsim, or autsim spectrum disorder (ASD), refers to a
-              broad range of conditions characterized by challenges with social
-              skills, repetitive behaviors, speech and nonverbal communcitaion.
+            <Text
+              style={
+                this.state.nightMode
+                  ? sectionStyles.contentTextStyleN
+                  : sectionStyles.contentTextStyleL
+              }
+            >
+              Autsim, or autsim spectrum disorder (ASD), refers to a broad range
+              of conditions characterized by challenges with social skills,
+              repetitive behaviors, speech and nonverbal communcitaion.
               According to the Centers for Disease Control, autism affects an
               estimated 1 in 59 children in United States today.{"\n\n"}
               We know that there is not one autism but many subtypes, most
@@ -70,43 +144,9 @@ export default class Section1 extends React.Component {
             </Text>
           </View>
 
-          <ImageBackground style={styles.footerStyle} />
+          <ImageBackground style={sectionStyles.footerStyle} />
         </ScrollView>
       </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  mainContainer: {
-    height: "100%",
-    width: "100%",
-    flexDirection: "column",
-    alignItems: "center"
-  },
-  contentTextStyle: {
-    textAlign: "justify",
-    fontSize: 16
-  },
-  headingStyle: {
-    fontWeight: "bold",
-    fontSize: 26,
-    textAlign: "center",
-    paddingTop: 30,
-    paddingBottom: 20
-  },
-  descriptionStyle: {
-    paddingTop: 10,
-    color: "grey",
-    fontSize: 14,
-    fontStyle: "italic",
-    textAlign: "center"
-  },
-  footerStyle: {
-    backgroundColor: "#01411cff",
-    width: "100%",
-    height: 50,
-    borderTopWidth: 2,
-    borderTopColor: "black"
-  }
-});
