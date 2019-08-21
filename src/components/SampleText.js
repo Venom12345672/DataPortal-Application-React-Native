@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { View, Text, StyleSheet, ScrollView } from "react-native";
-
 import Settings from "./settings.json";
+
 export default class SampleText extends React.Component {
   state = {
     renderContent: null

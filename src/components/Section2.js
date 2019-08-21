@@ -15,6 +15,7 @@ import VideoPlayer from "react-native-video-controls";
 import ToggleSwitch from "toggle-switch-react-native";
 import { sectionStyles } from "./SectionStyling";
 import Icon from "react-native-vector-icons/Foundation";
+import Settings from "./settings.json";
 
 const phone_width = Dimensions.get("window").width;
 
@@ -78,20 +79,28 @@ export default class Section2 extends React.Component {
             }}
           >
             <Text
-              style={
+              style={[
                 this.state.nightMode
                   ? sectionStyles.headingStyleN
-                  : sectionStyles.headingStyleL
-              }
+                  : sectionStyles.headingStyleL,
+                {
+                  fontSize: Settings.currentSettingsEnglish[3],
+                  lineHeight: Settings.currentLineHeightEnglish
+                }
+              ]}
             >
               Signs in Autistic Children
             </Text>
             <Text
-              style={
+              style={[
                 this.state.nightMode
                   ? sectionStyles.contentTextStyleN
-                  : sectionStyles.contentTextStyleL
-              }
+                  : sectionStyles.contentTextStyleL,
+                {
+                  fontSize: Settings.currentSettingsEnglish[1],
+                  lineHeight: Settings.currentLineHeightEnglish
+                }
+              ]}
             >
               Autsim, or autsim spectrum disorder (ASD), refers to a broad range
               of conditions characterized by challenges with social skills,
@@ -118,20 +127,32 @@ export default class Section2 extends React.Component {
               />
             </View>
 
-            <Text style={sectionStyles.descriptionStyle}>
+            <Text
+              style={[
+                sectionStyles.descriptionStyle,
+                {
+                  fontSize: Settings.currentSettingsEnglish[0],
+                  lineHeight: Settings.currentLineHeightEnglish
+                }
+              ]}
+            >
               "If you've met one person with autism, you've met one person with
               autism"
             </Text>
             <Text
-              style={
+              style={[
                 this.state.nightMode
                   ? sectionStyles.contentTextStyleN
-                  : sectionStyles.contentTextStyleL
-              }
+                  : sectionStyles.contentTextStyleL,
+                {
+                  fontSize: Settings.currentSettingsEnglish[1],
+                  lineHeight: Settings.currentLineHeightEnglish
+                }
+              ]}
             >
-              {"\n\n"}Autsim, or autsim spectrum disorder (ASD), refers to a
-              broad range of conditions characterized by challenges with social
-              skills, repetitive behaviors, speech and nonverbal communcitaion.
+              Autsim, or autsim spectrum disorder (ASD), refers to a broad range
+              of conditions characterized by challenges with social skills,
+              repetitive behaviors, speech and nonverbal communcitaion.
               According to the Centers for Disease Control, autism affects an
               estimated 1 in 59 children in United States today.{"\n\n"}
               We know that there is not one autism but many subtypes, most

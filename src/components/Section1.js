@@ -10,6 +10,7 @@ import {
 } from "react-native";
 
 const phone_width = Dimensions.get("window").width;
+import Settings from "./settings.json";
 
 import Carousel from "react-native-carousel-view";
 import ToggleSwitch from "toggle-switch-react-native";
@@ -22,7 +23,6 @@ export default class Section1 extends React.Component {
   };
 
   static navigationOptions = ({ navigation }) => {
-    console.log(navigation.state);
     return {
       headerRight: (
         <View
@@ -70,24 +70,32 @@ export default class Section1 extends React.Component {
         <ScrollView>
           <View
             style={{
-             paddingHorizontal: 20
+              paddingHorizontal: 20
             }}
           >
             <Text
-              style={
+              style={[
                 this.state.nightMode
                   ? sectionStyles.headingStyleN
-                  : sectionStyles.headingStyleL
-              }
+                  : sectionStyles.headingStyleL,
+                {
+                  fontSize: Settings.currentSettingsEnglish[3],
+                  lineHeight: Settings.currentLineHeightEnglish
+                }
+              ]}
             >
               Signs in Autistic Children
             </Text>
             <Text
-              style={
+              style={[
                 this.state.nightMode
                   ? sectionStyles.contentTextStyleN
-                  : sectionStyles.contentTextStyleL
-              }
+                  : sectionStyles.contentTextStyleL,
+                {
+                  fontSize: Settings.currentSettingsEnglish[1],
+                  lineHeight: Settings.currentLineHeightEnglish
+                }
+              ]}
             >
               Autsim, or autsim spectrum disorder (ASD), refers to a broad range
               of conditions characterized by challenges with social skills,
@@ -103,7 +111,7 @@ export default class Section1 extends React.Component {
               require significiant support in thier daily lives, while others
               may need less support and, in some cases, live entirely
               independently.
-              {"\n\n"}
+              {"\n"}
             </Text>
             <View style={{ alignItems: "center", justifyContent: "center" }}>
               <Carousel
@@ -116,16 +124,28 @@ export default class Section1 extends React.Component {
                 <ImageBackground style={{ backgroundColor: "grey" }} />
               </Carousel>
             </View>
-            <Text style={sectionStyles.descriptionStyle}>
+            <Text
+              style={[
+                sectionStyles.descriptionStyle,
+                {
+                  fontSize: Settings.currentSettingsEnglish[0],
+                  lineHeight: Settings.currentLineHeightEnglish
+                }
+              ]}
+            >
               "If you've met one person with autism, you've met one person with
               autism"
             </Text>
             <Text
-              style={
+              style={[
                 this.state.nightMode
                   ? sectionStyles.contentTextStyleN
-                  : sectionStyles.contentTextStyleL
-              }
+                  : sectionStyles.contentTextStyleL,
+                {
+                  fontSize: Settings.currentSettingsEnglish[1],
+                  lineHeight: Settings.currentLineHeightEnglish
+                }
+              ]}
             >
               Autsim, or autsim spectrum disorder (ASD), refers to a broad range
               of conditions characterized by challenges with social skills,

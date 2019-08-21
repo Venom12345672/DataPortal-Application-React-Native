@@ -1,6 +1,7 @@
 import { StyleSheet } from "react-native";
 
-export const sectionStyles = StyleSheet.create({
+
+export let sectionStyles = StyleSheet.create({
   mainContainerL: {
     height: "100%",
     width: "100%",
@@ -18,18 +19,15 @@ export const sectionStyles = StyleSheet.create({
   },
   contentTextStyleL: {
     textAlign: "justify",
-    fontSize: 16,
     paddingTop: 20
   },
   contentTextStyleN: {
     textAlign: "justify",
-    fontSize: 16,
     color: "white",
     paddingTop: 20
   },
   headingStyleL: {
     fontWeight: "bold",
-    fontSize: 26,
     textAlign: "center",
     borderBottomWidth: 5,
     paddingBottom: 5,
@@ -37,7 +35,6 @@ export const sectionStyles = StyleSheet.create({
   },
   headingStyleN: {
     fontWeight: "bold",
-    fontSize: 26,
     textAlign: "center",
     borderBottomWidth: 5,
     borderBottomColor: "grey",
