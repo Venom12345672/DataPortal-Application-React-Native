@@ -84,13 +84,11 @@ export default class FontSettings extends React.Component {
           <View>
             <FontAdjuster
               fontChange={this.fontChnageHandler}
-              sliderValue={this.state.fontSliderValue}
             />
           </View>
           <View>
             <LineHeight
               lineHeightChange={this.lineHeightChangeHandler}
-              sliderValue={this.state.lineHeightValue}
             />
           </View>
         </Carousel>

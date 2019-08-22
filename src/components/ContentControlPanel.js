@@ -51,6 +51,7 @@ export default class Section1 extends Component {
       currentSettings: data,
       fontSliderValue: cond
     });
+    this.props.refreshContent();
   };
 
   lineHeightChangeHandler = cond => {
@@ -67,6 +68,7 @@ export default class Section1 extends Component {
       currentLineHeight: data,
       lineHeightValue: cond
     });
+    this.props.refreshContent();
   };
   render() {
     return (
@@ -84,16 +86,10 @@ export default class Section1 extends Component {
             animate={false}
           >
             <View>
-              <FontAdjuster
-                fontChange={this.fontChnageHandler}
-                sliderValue={this.state.fontSliderValue}
-              />
+              <FontAdjuster fontChange={this.fontChnageHandler} />
             </View>
             <View>
-              <LineHeight
-                lineHeightChange={this.lineHeightChangeHandler}
-                sliderValue={this.state.lineHeightValue}
-              />
+              <LineHeight lineHeightChange={this.lineHeightChangeHandler} />
             </View>
           </Carousel>
         </View>
