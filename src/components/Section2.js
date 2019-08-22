@@ -16,12 +16,16 @@ import ToggleSwitch from "toggle-switch-react-native";
 import { sectionStyles } from "./SectionStyling";
 import Icon from "react-native-vector-icons/Foundation";
 import Settings from "./settings.json";
-
+import ContentControlPanel from "./ContentControlPanel"
 const phone_width = Dimensions.get("window").width;
 
 export default class Section2 extends React.Component {
   state = {
-    nightMode: false
+    nightMode: false,
+    lineHeight: Settings.currentLineHeightEnglish,
+    descriptionFont: Settings.currentSettingsEnglish[0],
+    contentFont: Settings.currentSettingsEnglish[1],
+    headingFont: Settings.currentSettingsEnglish[3]
   };
 
   static navigationOptions = ({ navigation }) => {
@@ -63,6 +67,14 @@ export default class Section2 extends React.Component {
     this.setState({ nightMode: !this.state.nightMode });
     this.props.navigation.setParams({ nightMode: !this.state.nightMode });
   };
+  refreshContent = () => {
+    this.setState({
+      lineHeight: Settings.currentLineHeightEnglish,
+      descriptionFont: Settings.currentSettingsEnglish[0],
+      contentFont: Settings.currentSettingsEnglish[1],
+      headingFont: Settings.currentSettingsEnglish[3]
+    });
+  };
   render() {
     return (
       <View
@@ -84,8 +96,8 @@ export default class Section2 extends React.Component {
                   ? sectionStyles.headingStyleN
                   : sectionStyles.headingStyleL,
                 {
-                  fontSize: Settings.currentSettingsEnglish[3],
-                  lineHeight: Settings.currentLineHeightEnglish
+                  fontSize: this.state.headingFont,
+                  lineHeight: this.state.lineHeight
                 }
               ]}
             >
@@ -97,8 +109,8 @@ export default class Section2 extends React.Component {
                   ? sectionStyles.contentTextStyleN
                   : sectionStyles.contentTextStyleL,
                 {
-                  fontSize: Settings.currentSettingsEnglish[1],
-                  lineHeight: Settings.currentLineHeightEnglish
+                  fontSize: this.state.contentFont,
+                  lineHeight: this.state.lineHeight
                 }
               ]}
             >
@@ -131,8 +143,8 @@ export default class Section2 extends React.Component {
               style={[
                 sectionStyles.descriptionStyle,
                 {
-                  fontSize: Settings.currentSettingsEnglish[0],
-                  lineHeight: Settings.currentLineHeightEnglish
+                  fontSize: this.state.descriptionFont,
+                  lineHeight: this.state.lineHeight
                 }
               ]}
             >
@@ -145,8 +157,8 @@ export default class Section2 extends React.Component {
                   ? sectionStyles.contentTextStyleN
                   : sectionStyles.contentTextStyleL,
                 {
-                  fontSize: Settings.currentSettingsEnglish[1],
-                  lineHeight: Settings.currentLineHeightEnglish
+                  fontSize: this.state.contentFont,
+                  lineHeight: this.state.lineHeight
                 }
               ]}
             >
@@ -169,6 +181,7 @@ export default class Section2 extends React.Component {
 
           <ImageBackground style={sectionStyles.footerStyle} />
         </ScrollView>
+        <ContentControlPanel refreshContent={this.refreshContent} />
       </View>
     );
   }

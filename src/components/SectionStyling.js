@@ -53,6 +53,8 @@ export let sectionStyles = StyleSheet.create({
     width: "100%",
     height: 50,
     borderTopWidth: 2,
-    borderTopColor: "black"
+    borderTopColor: "black",
+    position: 'absolute',
+    bottom: 0
   }
 });
