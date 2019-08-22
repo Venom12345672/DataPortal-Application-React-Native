@@ -1,45 +1,58 @@
 import React from "react";
-import { Text, View, StyleSheet, Slider } from "react-native";
-import MarkSlider from "react-native-mark-slider";
+import { Text, View, StyleSheet } from "react-native";
 import Settings from "./settings.json";
+import { Slider } from "react-native-elements";
+import Icon from "react-native-vector-icons/FontAwesome";
+
 export default class LineHeight extends React.Component {
+  state = {
+    values: ["Small", "Default", "Medium", "Large", "XL"]
+  };
   render() {
-    const marks = [
-      { name: "Small", value: 0 },
-      { name: "Default", value: 1 },
-      { name: "Medium", value: 2 },
-      { name: "Large", value: 3 },
-      { name: "XL", value: 4 }
-    ];
     return (
-      <View style={styles.sliderContainer}>
-        <MarkSlider
-          style={{ width: "100%", height: 50, alignSelf: "center" }}
+      <View style={styles.container}>
+        <Slider
+          style={{ width: 300 }}
           step={1}
+          minimumValue={0}
+          maximumValue={4}
           value={Settings.lineHeightSliderValue}
-          max={4}
-          min={0}
-          marks={marks}
+          thumbTintColor="#275EA8"
           minimumTrackTintColor="#01411cff"
-          maximumTrackTintColor="grey"
-          onChange={this.props.lineHeightChange}
+          onValueChange={this.props.lineHeightChange}
         />
+        <View style={styles.textCon}>
+          <Icon name="text-height" size={18} color={"black"} />
+          <Text style={styles.colorYellow}>
+            {this.state.values[Settings.lineHeightSliderValue]}
+          </Text>
+
+          <Icon name="text-height" size={28} color={"black"} />
+        </View>
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  sliderContainer: {
+  container: {
     width: "100%",
     height: "100%",
+    alignItems: "center",
+    justifyContent: "center",
     borderTopWidth: 1,
-    borderBottomWidth: 1,
-    marginTop: 10,
-    borderBottomColor: "#e4e4e4",
-    borderTopColor: "#e4e4e4",
-    alignContent: "center",
-    justifyContent: "center"
+    borderTopColor: "#e4e4e4"
   },
-  
+  textCon: {
+    width: 320,
+    flexDirection: "row",
+    justifyContent: "space-between"
+  },
+  colorGrey: {
+    color: "black"
+  },
+  colorYellow: {
+    color: "#01411cff",
+    fontSize: 20
+  }
 });

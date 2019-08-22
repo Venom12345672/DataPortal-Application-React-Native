@@ -16,7 +16,7 @@ import Carousel from "react-native-carousel-view";
 import ToggleSwitch from "toggle-switch-react-native";
 import { sectionStyles } from "./SectionStyling";
 import Icon from "react-native-vector-icons/Foundation";
-
+import ContentControlPanel from "./ContentControlPanel"
 export default class Section1 extends React.Component {
   state = {
     nightMode: false
@@ -166,6 +166,7 @@ export default class Section1 extends React.Component {
 
           <ImageBackground style={sectionStyles.footerStyle} />
         </ScrollView>
+        <ContentControlPanel/>
       </View>
     );
   }

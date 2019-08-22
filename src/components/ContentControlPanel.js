@@ -1,15 +1,16 @@
-import React from "react";
-import { Text, View, StyleSheet, Dimensions } from "react-native";
-import Carousel from "react-native-carousel-view";
+import React, { Component } from "react";
+import { View, Dimensions, StyleSheet } from "react-native";
 
-import SampleText from "./SampleText";
+import SlidingUpPanel from "rn-sliding-up-panel";
+import Carousel from "react-native-carousel-view";
 import FontAdjuster from "./FontAdjuster";
 import LineHeight from "./LineHeight";
 import Settings from "./settings.json";
 
 const phone_width = Dimensions.get("window").width;
 const phone_height = Dimensions.get("window").height;
-export default class FontSettings extends React.Component {
+const drawer_height = phone_height * 0.3;
+export default class Section1 extends Component {
   state = {
     currentSettings: [],
     currentLineHeight: 0,
@@ -67,74 +68,58 @@ export default class FontSettings extends React.Component {
       lineHeightValue: cond
     });
   };
-
   render() {
     return (
-      <View style={styles.container}>
-        <View style={styles.borderContainer}>
-          <SampleText />
+      <SlidingUpPanel
+        ref={c => (this._panel = c)}
+        draggableRange={{ top: drawer_height, bottom: 10 }}
+        height={drawer_height}
+      >
+        <View style={styles.slidingContainer}>
+          <Carousel
+            width={phone_width * 0.9}
+            height={drawer_height}
+            indicatorAtBottom={true}
+            indicatorSize={12}
+            animate={false}
+          >
+            <View>
+              <FontAdjuster
+                fontChange={this.fontChnageHandler}
+                sliderValue={this.state.fontSliderValue}
+              />
+            </View>
+            <View>
+              <LineHeight
+                lineHeightChange={this.lineHeightChangeHandler}
+                sliderValue={this.state.lineHeightValue}
+              />
+            </View>
+          </Carousel>
         </View>
-        <Carousel
-          width={phone_width * 0.9}
-          height={phone_height * 0.18}
-          indicatorAtBottom={true}
-          indicatorSize={12}
-          animate={false}
-        >
-          <View>
-            <FontAdjuster
-              fontChange={this.fontChnageHandler}
-              sliderValue={this.state.fontSliderValue}
-            />
-          </View>
-          <View>
-            <LineHeight
-              lineHeightChange={this.lineHeightChangeHandler}
-              sliderValue={this.state.lineHeightValue}
-            />
-          </View>
-        </Carousel>
-      </View>
+      </SlidingUpPanel>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
+  slidingContainer: {
+    flex: 1,
+    backgroundColor: "#e4e4e4",
+    alignItems: "center",
+    justifyContent: "center",
     height: "100%",
-    width: "100%",
-    flexDirection: "column",
-    alignItems: "center"
+    width: "100%"
   },
-  contentContainer: {
-    borderWidth: 2,
-    borderColor: "#CCC",
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
+  textCon: {
+    width: 320,
+    flexDirection: "row",
+    justifyContent: "space-between"
   },
-  borderContainer: {
-    width: "90%",
-    height: "78%",
-    marginTop: 10,
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
-    borderBottomColor: "#e4e4e4",
-    borderTopColor: "#e4e4e4"
+  colorGrey: {
+    color: "black"
   },
-  fontBorderContainer: {
-    width: "90%",
-    height: "22%"
-  },
-  descriptionContainer: {
-    width: "90%",
-    height: "5%"
-  },
-  contentContainer: {
-    borderWidth: 2,
-    borderColor: "#CCC",
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
+  colorYellow: {
+    color: "black"
   }
 });

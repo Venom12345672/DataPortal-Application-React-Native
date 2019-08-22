@@ -1,67 +1,172 @@
 import React from "react";
-import { Text, View, StyleSheet } from "react-native";
-import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
+import {
+  Text,
+  View,
+  StyleSheet,
+  ScrollView,
+  Image,
+  ImageBackground,
+  Dimensions
+} from "react-native";
 
-import SampleText from "./SampleText";
-import FontAdjuster from "./FontAdjuster";
+const phone_width = Dimensions.get("window").width;
 import Settings from "./settings.json";
-export default class FontSettings extends React.Component {
+
+import Carousel from "react-native-carousel-view";
+import ToggleSwitch from "toggle-switch-react-native";
+import { sectionStyles } from "./SectionStyling";
+import Icon from "react-native-vector-icons/Foundation";
+
+export default class Section1 extends React.Component {
   state = {
-    currentSettings: [],
-    fontSliderValue: 1
+    nightMode: false
   };
 
+  static navigationOptions = ({ navigation }) => {
+    return {
+      headerRight: (
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            paddingHorizontal: 10
+          }}
+        >
+          <View style={{ paddingRight: 5 }}>
+            <Icon
+              name="contrast"
+              size={30}
+              color={navigation.getParam("nightMode") ? "black" : "white"}
+            />
+          </View>
+          <ToggleSwitch
+            isOn={navigation.getParam("nightMode")}
+            onColor="green"
+            labelStyle={{ color: "black", fontWeight: "900" }}
+            onToggle={navigation.getParam("ToggleSwitch")}
+          />
+        </View>
+      )
+    };
+  };
   componentDidMount() {
-    data = null;
-    if (Settings.language == "english") {
-      data = Settings.currentSettingsEnglish;
-    } else if (Settings.language == "urdu") {
-      data = Settings.currentSettingsUrdu;
-    }
-    value = Settings.fontSliderValue;
-    this.setState({ currentSettings: data, fontSliderValue: value });
+    this.props.navigation.setParams({ ToggleSwitch: this._toggleSwitch });
+    this.props.navigation.setParams({ nightMode: this.state.nightMode });
   }
-  fontChnageHandler = cond => {
-    data = null;
-    if (Settings.language == "english") {
-      data = Settings.fontSizeEnglish[cond];
-      Settings.currentSettingsEnglish = data;
-    } else if (Settings.language == "urdu") {
-      data = Settings.fontSizeUrdu[cond];
-      Settings.currentSettingsUrdu = data;
-    }
-    Settings.fontSliderValue = cond;
-    this.setState({
-      currentSettings: data,
-      fontSliderValue: cond
-    });
-  };
 
+  _toggleSwitch = () => {
+    this.setState({ nightMode: !this.state.nightMode });
+    this.props.navigation.setParams({ nightMode: !this.state.nightMode });
+  };
   render() {
     return (
-      <View style={styles.container}>
-        <SampleText />
-        <FontAdjuster
-          fontChange={this.fontChnageHandler}
-          sliderValue={this.state.fontSliderValue}
-        />
+      <View
+        style={
+          this.state.nightMode
+            ? sectionStyles.mainContainerN
+            : sectionStyles.mainContainerL
+        }
+      >
+        <ScrollView>
+          <View
+            style={{
+              paddingHorizontal: 20
+            }}
+          >
+            <Text
+              style={[
+                this.state.nightMode
+                  ? sectionStyles.headingStyleN
+                  : sectionStyles.headingStyleL,
+                {
+                  fontSize: Settings.currentSettingsEnglish[3],
+                  lineHeight: Settings.currentLineHeightEnglish
+                }
+              ]}
+            >
+              Signs in Autistic Children
+            </Text>
+            <Text
+              style={[
+                this.state.nightMode
+                  ? sectionStyles.contentTextStyleN
+                  : sectionStyles.contentTextStyleL,
+                {
+                  fontSize: Settings.currentSettingsEnglish[1],
+                  lineHeight: Settings.currentLineHeightEnglish
+                }
+              ]}
+            >
+              Autsim, or autsim spectrum disorder (ASD), refers to a broad range
+              of conditions characterized by challenges with social skills,
+              repetitive behaviors, speech and nonverbal communcitaion.
+              According to the Centers for Disease Control, autism affects an
+              estimated 1 in 59 children in United States today.{"\n\n"}
+              We know that there is not one autism but many subtypes, most
+              influenced by a combinatiopn of genetic and environmental factors.
+              Because autism is a spectrum disorder, each person with autism has
+              a distinct set of strenghts and challenges. The ways in which
+              people with autism learn, thiink and problem-solve can range from
+              highly killed to severely challenged. Some people with ASD may
+              require significiant support in thier daily lives, while others
+              may need less support and, in some cases, live entirely
+              independently.
+              {"\n"}
+            </Text>
+            <View style={{ alignItems: "center", justifyContent: "center" }}>
+              <Carousel
+                width={phone_width * 0.9}
+                indicatorAtBottom={true}
+                animate={false}
+              >
+                <ImageBackground style={{ backgroundColor: "#01411cff" }} />
+                <ImageBackground style={{ backgroundColor: "blue" }} />
+                <ImageBackground style={{ backgroundColor: "grey" }} />
+              </Carousel>
+            </View>
+            <Text
+              style={[
+                sectionStyles.descriptionStyle,
+                {
+                  fontSize: Settings.currentSettingsEnglish[0],
+                  lineHeight: Settings.currentLineHeightEnglish
+                }
+              ]}
+            >
+              "If you've met one person with autism, you've met one person with
+              autism"
+            </Text>
+            <Text
+              style={[
+                this.state.nightMode
+                  ? sectionStyles.contentTextStyleN
+                  : sectionStyles.contentTextStyleL,
+                {
+                  fontSize: Settings.currentSettingsEnglish[1],
+                  lineHeight: Settings.currentLineHeightEnglish
+                }
+              ]}
+            >
+              Autsim, or autsim spectrum disorder (ASD), refers to a broad range
+              of conditions characterized by challenges with social skills,
+              repetitive behaviors, speech and nonverbal communcitaion.
+              According to the Centers for Disease Control, autism affects an
+              estimated 1 in 59 children in United States today.{"\n\n"}
+              We know that there is not one autism but many subtypes, most
+              influenced by a combinatiopn of genetic and environmental factors.
+              Because autism is a spectrum disorder, each person with autism has
+              a distinct set of strenghts and challenges. The ways in which
+              people with autism learn, thiink and problem-solve can range from
+              highly killed to severely challenged. Some people with ASD may
+              require significiant support in thier daily lives, while others
+              may need less support and, in some cases, live entirely
+              independently.{"\n"}
+            </Text>
+          </View>
+
+          <ImageBackground style={sectionStyles.footerStyle} />
+        </ScrollView>
       </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    height: "100%",
-    width: "100%",
-    flexDirection: "column",
-    alignItems: "center"
-  },
-  contentContainer: {
-    borderWidth: 2,
-    borderColor: "#CCC",
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
-  }
-});
