@@ -28,6 +28,8 @@
     "react-native-simple-radio-button": "^2.7.3",
     "react-native-sliding-up-down-panels": "^1.0.0",
     "react-native-snap-carousel": "^3.8.0",
+    "react-native-sound": "^0.11.0",
+    "react-native-sound-player": "^0.10.1",
     "react-native-swipe-gestures": "^1.0.3",
     "react-native-ui-kitten": "^4.1.0",
     "react-native-vector-icons": "^6.6.0",
