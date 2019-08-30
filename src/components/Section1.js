@@ -6,7 +6,9 @@ import {
   ScrollView,
   Image,
   ImageBackground,
-  Dimensions
+  Dimensions,
+  TouchableHighlight,
+  TouchableOpacity
 } from "react-native";
 
 const phone_width = Dimensions.get("window").width;
@@ -20,7 +22,8 @@ import ContentControlPanel from "./ContentControlPanel";
 export default class Section1 extends React.Component {
   state = {
     nightMode: false,
-    lineHeight : Settings.currentLineHeightEnglish,
+    longPress: [false,false,false,false],
+    lineHeight: Settings.currentLineHeightEnglish,
     descriptionFont: Settings.currentSettingsEnglish[0],
     contentFont: Settings.currentSettingsEnglish[1],
     headingFont: Settings.currentSettingsEnglish[3]
@@ -53,6 +56,13 @@ export default class Section1 extends React.Component {
       )
     };
   };
+  highlight = (string, index) =>
+    this.state.longPress[index] ? (
+      <Text style={styles.highlighted}>{string} </Text>
+    ) : (
+      <Text>{string} </Text>
+    );
+
   componentDidMount() {
     this.props.navigation.setParams({ ToggleSwitch: this._toggleSwitch });
     this.props.navigation.setParams({ nightMode: this.state.nightMode });
@@ -62,6 +72,9 @@ export default class Section1 extends React.Component {
     this.setState({ nightMode: !this.state.nightMode });
     this.props.navigation.setParams({ nightMode: !this.state.nightMode });
   };
+  _onLongPress = () => {
+    alert("hamzah")
+  };
   refreshContent = () => {
     this.setState({
       lineHeight: Settings.currentLineHeightEnglish,
@@ -69,7 +82,7 @@ export default class Section1 extends React.Component {
       contentFont: Settings.currentSettingsEnglish[1],
       headingFont: Settings.currentSettingsEnglish[3]
     });
-  }
+  };
   render() {
     return (
       <View
@@ -87,6 +100,7 @@ export default class Section1 extends React.Component {
           >
             <Fragment>
               <Text
+                selectable={true}
                 style={[
                   this.state.nightMode
                     ? sectionStyles.headingStyleN
@@ -99,34 +113,41 @@ export default class Section1 extends React.Component {
               >
                 Signs in Autistic Children
               </Text>
-              <Text
-                style={[
-                  this.state.nightMode
-                    ? sectionStyles.contentTextStyleN
-                    : sectionStyles.contentTextStyleL,
-                  {
-                    fontSize: this.state.contentFont,
-                    lineHeight:this.state.lineHeight
-                  }
-                ]}
-              >
-                Autsim, or autsim spectrum disorder (ASD), refers to a broad
-                range of conditions characterized by challenges with social
-                skills, repetitive behaviors, speech and nonverbal
-                communcitaion. According to the Centers for Disease Control,
-                autism affects an estimated 1 in 59 children in United States
-                today.{"\n\n"}
-                We know that there is not one autism but many subtypes, most
-                influenced by a combinatiopn of genetic and environmental
-                factors. Because autism is a spectrum disorder, each person with
-                autism has a distinct set of strenghts and challenges. The ways
-                in which people with autism learn, thiink and problem-solve can
-                range from highly killed to severely challenged. Some people
-                with ASD may require significiant support in thier daily lives,
-                while others may need less support and, in some cases, live
-                entirely independently.
-                {"\n"}
-              </Text>
+              <TouchableOpacity key={0} onLongPress={this._onLongPress}>
+                <Text
+                  style={[
+                    this.state.nightMode
+                      ? sectionStyles.contentTextStyleN
+                      : sectionStyles.contentTextStyleL,
+                    {
+                      fontSize: this.state.contentFont,
+                      lineHeight: this.state.lineHeight
+                    }
+                  ]}
+                >
+                  {this.highlight(
+                    "Autsim, or autsim spectrum disorder (ASD), refers to a broad range of conditions characterized by challenges with social skills, repetitive behaviors, speech and nonverbal communcitaion. According to the Centers for Disease Control, autism affects an estimated 1 in 59 children in United States today."
+                  ,0)}
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity onLongPress={this._onLongPress}>
+                <Text
+                  style={[
+                    this.state.nightMode
+                      ? sectionStyles.contentTextStyleN
+                      : sectionStyles.contentTextStyleL,
+                    {
+                      fontSize: this.state.contentFont,
+                      lineHeight: this.state.lineHeight
+                    }
+                  ]}
+                >
+                  {this.highlight(
+                    "We know that there is not one autism but many subtypes, most influenced by a combinatiopn of genetic and environmental factors. Because autism is a spectrum disorder, each person with autism has a distinct set of strenghts and challenges. The ways in which people with autism learn, thiink and problem-solve can range from highly killed to severely challenged. Some people with ASD may require significiant support in thier daily lives, while others may need less support and, in some cases, live entirely independently.\n"
+                  ,1)}
+                </Text>
+              </TouchableOpacity>
+
               <View style={{ alignItems: "center", justifyContent: "center" }}>
                 <Carousel
                   width={phone_width * 0.9}
@@ -150,33 +171,40 @@ export default class Section1 extends React.Component {
                 "If you've met one person with autism, you've met one person
                 with autism"
               </Text>
-              <Text
-                style={[
-                  this.state.nightMode
-                    ? sectionStyles.contentTextStyleN
-                    : sectionStyles.contentTextStyleL,
-                  {
-                    fontSize: this.state.contentFont,
-                    lineHeight: this.state.lineHeight
-                  }
-                ]}
-              >
-                Autsim, or autsim spectrum disorder (ASD), refers to a broad
-                range of conditions characterized by challenges with social
-                skills, repetitive behaviors, speech and nonverbal
-                communcitaion. According to the Centers for Disease Control,
-                autism affects an estimated 1 in 59 children in United States
-                today.{"\n\n"}
-                We know that there is not one autism but many subtypes, most
-                influenced by a combinatiopn of genetic and environmental
-                factors. Because autism is a spectrum disorder, each person with
-                autism has a distinct set of strenghts and challenges. The ways
-                in which people with autism learn, thiink and problem-solve can
-                range from highly killed to severely challenged. Some people
-                with ASD may require significiant support in thier daily lives,
-                while others may need less support and, in some cases, live
-                entirely independently.{"\n"}
-              </Text>
+              <TouchableOpacity onLongPress={this._onLongPress}>
+                <Text
+                  style={[
+                    this.state.nightMode
+                      ? sectionStyles.contentTextStyleN
+                      : sectionStyles.contentTextStyleL,
+                    {
+                      fontSize: this.state.contentFont,
+                      lineHeight: this.state.lineHeight
+                    }
+                  ]}
+                >
+                  {this.highlight(
+                    "Autsim, or autsim spectrum disorder (ASD), refers to a broad range of conditions characterized by challenges with social skills, repetitive behaviors, speech and nonverbal communcitaion. According to the Centers for Disease Control, autism affects an estimated 1 in 59 children in United States today."
+                  ,2)}
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity onLongPress={this._onLongPress}>
+                <Text
+                  style={[
+                    this.state.nightMode
+                      ? sectionStyles.contentTextStyleN
+                      : sectionStyles.contentTextStyleL,
+                    {
+                      fontSize: this.state.contentFont,
+                      lineHeight: this.state.lineHeight
+                    }
+                  ]}
+                >
+                  {this.highlight(
+                    "We know that there is not one autism but many subtypes, most influenced by a combinatiopn of genetic and environmental factors. Because autism is a spectrum disorder, each person with autism has a distinct set of strenghts and challenges. The ways in which people with autism learn, thiink and problem-solve can range from highly killed to severely challenged. Some people with ASD may require significiant support in thier daily lives, while others may need less support and, in some cases, live entirely independently.\n\n"
+                  ,3)}
+                </Text>
+              </TouchableOpacity>
             </Fragment>
           </View>
           <ImageBackground style={sectionStyles.footerStyle} />
@@ -186,3 +214,9 @@ export default class Section1 extends React.Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  highlighted: {
+    backgroundColor: "#e4e4e4"
+  }
+});

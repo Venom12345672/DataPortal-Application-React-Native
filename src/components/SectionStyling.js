@@ -51,7 +51,7 @@ export let sectionStyles = StyleSheet.create({
   footerStyle: {
     backgroundColor: "#01411cff",
     width: "100%",
-    height: 50,
+    height: 40,
     borderTopWidth: 2,
     borderTopColor: "black",
     position: 'absolute',
