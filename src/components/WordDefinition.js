@@ -77,8 +77,8 @@ const styles = StyleSheet.create({
   },
   definitionBlock: {
     height: "75%",
-    borderBottomColor: "black",
-    borderBottomWidth: 1
+    // borderBottomColor: "black",
+    // borderBottomWidth: 10
   },
   outerTextBox: {
     marginHorizontal: 20,

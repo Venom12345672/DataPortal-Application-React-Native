@@ -9,7 +9,8 @@ import {
   Dimensions,
   TouchableHighlight,
   TouchableOpacity,
-  ToastAndroid
+  ToastAndroid,
+  TouchableWithoutFeedback
 } from "react-native";
 const phone_width = Dimensions.get("window").width;
 import Settings from "./settings.json";
@@ -82,9 +83,9 @@ export default class Section1 extends React.Component {
     return line.map(word =>
       this.medicalTermsDict[this.removeCh(word)] ? (
         <Text
-          onPress={() =>
+          onLongPress={() =>
             this.setState({
-              showDefinition: !this.state.showDefinition,
+              showDefinition: true,
               defWord: this.removeCh(word)
             })
           }
@@ -153,11 +154,14 @@ export default class Section1 extends React.Component {
   render() {
     return (
       <View
-        style={
+        style={[
           this.state.nightMode
             ? sectionStyles.mainContainerN
-            : sectionStyles.mainContainerL
-        }
+            : sectionStyles.mainContainerL,
+          this.state.showDefinition
+            ? { backgroundColor: "rgba(0, 0, 0, 0.7)" }
+            : null
+        ]}
       >
         <ScrollView>
           <View
@@ -180,7 +184,9 @@ export default class Section1 extends React.Component {
               >
                 Signs in Autistic Children
               </Text>
-              <TouchableOpacity onLongPress={() => this._onLongPress(0)}>
+              <TouchableWithoutFeedback
+                onLongPress={() => this._onLongPress(0)}
+              >
                 <Text
                   style={[
                     this.state.nightMode
@@ -197,8 +203,10 @@ export default class Section1 extends React.Component {
                     0
                   )}
                 </Text>
-              </TouchableOpacity>
-              <TouchableOpacity onLongPress={() => this._onLongPress(1)}>
+              </TouchableWithoutFeedback>
+              <TouchableWithoutFeedback
+                onLongPress={() => this._onLongPress(1)}
+              >
                 <Text
                   style={[
                     this.state.nightMode
@@ -215,7 +223,7 @@ export default class Section1 extends React.Component {
                     1
                   )}
                 </Text>
-              </TouchableOpacity>
+              </TouchableWithoutFeedback>
 
               <View
                 style={{
@@ -246,7 +254,9 @@ export default class Section1 extends React.Component {
                 "If you've met one person with autism, you've met one person
                 with autism"
               </Text>
-              <TouchableOpacity onLongPress={() => this._onLongPress(2)}>
+              <TouchableWithoutFeedback
+                onLongPress={() => this._onLongPress(2)}
+              >
                 <Text
                   style={[
                     this.state.nightMode
@@ -263,8 +273,10 @@ export default class Section1 extends React.Component {
                     2
                   )}
                 </Text>
-              </TouchableOpacity>
-              <TouchableOpacity onLongPress={() => this._onLongPress(3)}>
+              </TouchableWithoutFeedback>
+              <TouchableWithoutFeedback
+                onLongPress={() => this._onLongPress(3)}
+              >
                 <Text
                   style={[
                     this.state.nightMode
@@ -282,7 +294,7 @@ export default class Section1 extends React.Component {
                     3
                   )}
                 </Text>
-              </TouchableOpacity>
+              </TouchableWithoutFeedback>
             </Fragment>
           </View>
           <ImageBackground style={sectionStyles.footerStyle} />

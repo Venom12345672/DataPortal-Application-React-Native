@@ -7,7 +7,7 @@ export let sectionStyles = StyleSheet.create({
     width: "100%",
     flexDirection: "column",
     alignItems: "center",
-    paddingTop: 30
+    paddingTop: 30,
   },
   mainContainerN: {
     height: "100%",
@@ -58,6 +58,6 @@ export let sectionStyles = StyleSheet.create({
     bottom: 0
   },
   highlightedL: {
-    backgroundColor: "#e4e4e4"
+    backgroundColor: "#EAFBFD"
   }
 });
