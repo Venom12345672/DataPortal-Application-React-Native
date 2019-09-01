@@ -19,12 +19,12 @@ export let sectionStyles = StyleSheet.create({
   },
   contentTextStyleL: {
     textAlign: "justify",
-    paddingTop: 20
+    marginTop: 20
   },
   contentTextStyleN: {
     textAlign: "justify",
     color: "white",
-    paddingTop: 20
+    marginTop: 20
   },
   headingStyleL: {
     fontWeight: "bold",
@@ -56,5 +56,8 @@ export let sectionStyles = StyleSheet.create({
     borderTopColor: "black",
     position: 'absolute',
     bottom: 0
+  },
+  highlightedL: {
+    backgroundColor: "#e4e4e4"
   }
 });
