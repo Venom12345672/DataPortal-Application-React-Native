@@ -15,7 +15,7 @@ import FontSettings from "./components/FontSettings";
 import ChangeLanguage from "./components/ChangeLanguage";
 import Section1 from "./components/Section1";
 import Section2 from "./components/Section2";
-
+import FontStyles from "./components/FontStyles"
 export const MainStack = createBottomTabNavigator({
   Home: {
     screen: CategoryPage
@@ -81,6 +81,16 @@ export const MainNavigator = createStackNavigator({
     screen: Section2,
     navigationOptions: {
       title: "Section 2",
+      headerStyle: {
+        backgroundColor: "#01411cff"
+      },
+      headerTintColor: "white"
+    }
+  },
+  FontStyles: {
+    screen: FontStyles,
+    navigationOptions: {
+      title: "Font Styles",
       headerStyle: {
         backgroundColor: "#01411cff"
       },

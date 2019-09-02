@@ -83,7 +83,7 @@ export default class Section1 extends React.Component {
     return line.map(word =>
       this.medicalTermsDict[this.removeCh(word)] ? (
         <Text
-          onLongPress={() =>
+          onPress={() =>
             this.setState({
               showDefinition: true,
               defWord: this.removeCh(word)

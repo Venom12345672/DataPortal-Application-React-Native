@@ -1,20 +1,27 @@
 import React from "react";
-import { Text, View, StyleSheet, Dimensions } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  Dimensions,
+  FlatList,
+  ScrollView
+} from "react-native";
 import Carousel from "react-native-carousel-view";
 
 import SampleText from "./SampleText";
 import FontAdjuster from "./FontAdjuster";
 import LineHeight from "./LineHeight";
 import Settings from "./settings.json";
-
+import RadioButton from "./RadioButton";
 const phone_width = Dimensions.get("window").width;
 const phone_height = Dimensions.get("window").height;
 export default class FontSettings extends React.Component {
   state = {
-    currentSettings: [],
-    currentLineHeight: 0,
-    fontSliderValue: 1,
-    lineHeightValue: 1
+    // currentSettings: [],
+    // currentLineHeight: 0,
+    // fontSliderValue: 1,
+    // lineHeightValue: 1
   };
 
   componentDidMount() {
@@ -28,12 +35,12 @@ export default class FontSettings extends React.Component {
     }
     value = Settings.fontSliderValue;
     value2 = Settings.lineHeightSliderValue;
-    this.setState({
-      currentSettings: data,
-      currentLineHeight: data2,
-      fontSliderValue: value,
-      lineHeightValue: value2
-    });
+    // this.setState({
+    //   currentSettings: data,
+    //   currentLineHeight: data2,
+    //   fontSliderValue: value,
+    //   lineHeightValue: value2
+    // });
   }
 
   fontChnageHandler = cond => {
@@ -46,10 +53,11 @@ export default class FontSettings extends React.Component {
       Settings.currentSettingsUrdu = data;
     }
     Settings.fontSliderValue = cond;
-    this.setState({
-      currentSettings: data,
-      fontSliderValue: cond
-    });
+    // this.setState({
+    //   currentSettings: data,
+    //   fontSliderValue: cond
+    // });
+    this.setState({})
   };
 
   lineHeightChangeHandler = cond => {
@@ -62,10 +70,11 @@ export default class FontSettings extends React.Component {
       Settings.currentLineHeightUrdu = data;
     }
     Settings.lineHeightSliderValue = cond;
-    this.setState({
-      currentLineHeight: data,
-      lineHeightValue: cond
-    });
+    // this.setState({
+    //   currentLineHeight: data,
+    //   lineHeightValue: cond
+    // });
+    this.setState({})
   };
 
   render() {
@@ -74,24 +83,22 @@ export default class FontSettings extends React.Component {
         <View style={styles.borderContainer}>
           <SampleText />
         </View>
-        <Carousel
-          width={phone_width * 0.9}
-          height={phone_height * 0.18}
-          indicatorAtBottom={true}
-          indicatorSize={12}
-          animate={false}
-        >
-          <View>
-            <FontAdjuster
-              fontChange={this.fontChnageHandler}
-            />
-          </View>
-          <View>
-            <LineHeight
-              lineHeightChange={this.lineHeightChangeHandler}
-            />
-          </View>
-        </Carousel>
+        <View style={{backgroundColor: '#e4e4e4'}}>
+          <Carousel
+            width={phone_width}
+            height={phone_height * 0.18}
+            indicatorAtBottom={true}
+            indicatorSize={12}
+            animate={false}
+          >
+            <View>
+              <FontAdjuster fontChange={this.fontChnageHandler} />
+            </View>
+            <View>
+              <LineHeight lineHeightChange={this.lineHeightChangeHandler} />
+            </View>
+          </Carousel>
+        </View>
       </View>
     );
   }
@@ -104,13 +111,6 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     alignItems: "center"
   },
-  contentContainer: {
-    borderWidth: 2,
-    borderColor: "#CCC",
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
-  },
   borderContainer: {
     width: "90%",
     height: "78%",
@@ -119,20 +119,5 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: "#e4e4e4",
     borderTopColor: "#e4e4e4"
-  },
-  fontBorderContainer: {
-    width: "90%",
-    height: "22%"
-  },
-  descriptionContainer: {
-    width: "90%",
-    height: "5%"
-  },
-  contentContainer: {
-    borderWidth: 2,
-    borderColor: "#CCC",
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
   }
 });

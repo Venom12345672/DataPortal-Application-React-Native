@@ -19,13 +19,18 @@ export default class ChangeLanguage extends React.Component {
   restartValues = value => {
     Settings.language = value;
     Settings.fontSliderValue = 1;
-    Settings.lineHeightSliderValue = 1
+    Settings.lineHeightSliderValue = 1;
+    Settings.currentFontNumber = 0
     if (value == "english") {
       Settings.currentSettingsEnglish = Settings.defaultEnglishSettings;
-      Settings.currentLineHeightEnglish = Settings.defaultLineHeightEnglish
+      Settings.currentLineHeightEnglish = Settings.defaultLineHeightEnglish;
+      Settings.currentFontOptions = Settings.englishFonts;
+      Settings.currentFont = Settings.currentFontOptions[0];
     } else if (value == "urdu") {
       Settings.currentSettingsUrdu = Settings.defaultUrduSettings;
-      Settings.currentLineHeightUrdu = Settings.defaultLineHeightUrdu
+      Settings.currentLineHeightUrdu = Settings.defaultLineHeightUrdu;
+      Settings.currentFontOptions = Settings.urduFonts;
+      Settings.currentFont = Settings.currentFontOptions[0];
     }
   };
 
@@ -76,7 +81,7 @@ const styles = StyleSheet.create({
     width: "90%",
     backgroundColor: "white",
     borderTopWidth: 1,
-    borderTopColor: "#e4e4e4",
+    borderTopColor: "#e4e4e4"
   },
   borderContainer: {
     width: "90%",

@@ -20,10 +20,14 @@
       "currentLineHeightUrdu" : 30,
       "currentSettingsUrdu" : [32,22],
       "language" : "english",
+      "currentFont": "Roboto",
+      "currentFontOptions": ["Roboto","Caslon","Open Sans"],
       "fontSliderValue" : 1,
       "lineHeightSliderValue" : 1,
       "defaultEnglishSettings" : [14, 16, 20, 26],
       "defaultUrduSettings" :[32,22],
       "defaultLineHeightEnglish" : 25,
-      "defaultLineHeightUrdu" : 30
-}
+      "defaultLineHeightUrdu" : 30,
+      "englishFonts":  ["Roboto","Caslon","Open Sans"],
+      "urduFonts": ["Alvi Nastaleeq", "BBC Urdu"]
+    }

@@ -30,7 +30,8 @@ export default class SampleText extends React.Component {
             textAlign: "justify",
 
             fontSize: Settings.currentSettingsEnglish[0],
-            lineHeight: Settings.currentLineHeightEnglish
+            lineHeight: Settings.currentLineHeightEnglish,
+            fontFamily: Settings.currentFont
           }}
         >
           Sample Text
@@ -43,7 +44,8 @@ export default class SampleText extends React.Component {
             textAlign: "justify",
 
             fontSize: Settings.currentSettingsEnglish[3],
-            lineHeight: Settings.currentLineHeightEnglish
+            lineHeight: Settings.currentLineHeightEnglish,
+            fontFamily: Settings.currentFont
           }}
         >
           The Wizard of Oz{"\n"}
@@ -53,7 +55,8 @@ export default class SampleText extends React.Component {
             textAlign: "justify",
 
             fontSize: Settings.currentSettingsEnglish[2],
-            lineHeight: Settings.currentLineHeightEnglish
+            lineHeight: Settings.currentLineHeightEnglish,
+            fontFamily: Settings.currentFont
           }}
         >
           Chapter XI: The Wonderful Emerald City of Oz{"\n"}
@@ -62,7 +65,8 @@ export default class SampleText extends React.Component {
           style={{
             textAlign: "justify",
             fontSize: Settings.currentSettingsEnglish[1],
-            lineHeight: Settings.currentLineHeightEnglish
+            lineHeight: Settings.currentLineHeightEnglish,
+            fontFamily: Settings.currentFont
           }}
         >
           Even with eyes protected by the green spectacles, Dorothy and her
@@ -98,7 +102,7 @@ export default class SampleText extends React.Component {
             paddingTop: 20,
             lineHeight: Settings.currentLineHeightUrdu,
             fontSize: Settings.currentSettingsUrdu[0],
-            fontFamily: "Alvi Nastaleeq"
+            fontFamily: Settings.currentFont
           }}
         >
           اسلام آباد(اردو پوائنٹ تازہ ترین اخبار۔04اگست 2019ء){"\n"}
@@ -107,7 +111,7 @@ export default class SampleText extends React.Component {
           style={{
             lineHeight: Settings.currentLineHeightUrdu,
             fontSize: Settings.currentSettingsUrdu[1],
-            fontFamily: "Alvi Nastaleeq"
+            fontFamily: Settings.currentFont
           }}
         >
           اسلام آباد(اردو پوائنٹ تازہ ترین اخبار۔04اگست 2019ء) قومی ٹیم کے سابق

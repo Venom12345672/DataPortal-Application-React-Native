@@ -34,6 +34,10 @@
 		56FF433200F44045A2FA2391 /* pkflag.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C36C07B35A04741988323F3 /* pkflag.png */; };
 		9E2ECF3CBCC4407AAB78B4C7 /* Times New Roman.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2E4FD05D18E64A5C82A4715B /* Times New Roman.ttf */; };
 		022D06CE3EAC4635A845C6E6 /* Alvi Nastaleeq.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 534E17B335BD4953A8A1F810 /* Alvi Nastaleeq.ttf */; };
+		C41B02ED00464340B0CC6271 /* Caslon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 87BDECFBD5114991B86BD6E2 /* Caslon.ttf */; };
+		A17549DBC2324D8DAC53166D /* LibreCaslonText.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DCB90D8BA9E9438C8B606F94 /* LibreCaslonText.ttf */; };
+		07D4738FC1CC46AEA96FB798 /* Garamond.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 44C294CC16334302AC514BDE /* Garamond.ttf */; };
+		6B44404B554047798BF0C17C /* Open Sans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C596D844EF6F48C68122B5D8 /* Open Sans.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +92,10 @@
 		9C36C07B35A04741988323F3 /* pkflag.png */ = {isa = PBXFileReference; name = "pkflag.png"; path = "../src/assets/pkflag.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		2E4FD05D18E64A5C82A4715B /* Times New Roman.ttf */ = {isa = PBXFileReference; name = "Times New Roman.ttf"; path = "../src/assets/Times New Roman.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		534E17B335BD4953A8A1F810 /* Alvi Nastaleeq.ttf */ = {isa = PBXFileReference; name = "Alvi Nastaleeq.ttf"; path = "../src/assets/Alvi Nastaleeq.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		87BDECFBD5114991B86BD6E2 /* Caslon.ttf */ = {isa = PBXFileReference; name = "Caslon.ttf"; path = "../src/assets/fonts/Caslon.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		DCB90D8BA9E9438C8B606F94 /* LibreCaslonText.ttf */ = {isa = PBXFileReference; name = "LibreCaslonText.ttf"; path = "../src/assets/fonts/LibreCaslonText.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		44C294CC16334302AC514BDE /* Garamond.ttf */ = {isa = PBXFileReference; name = "Garamond.ttf"; path = "../src/assets/fonts/Garamond.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C596D844EF6F48C68122B5D8 /* Open Sans.ttf */ = {isa = PBXFileReference; name = "Open Sans.ttf"; path = "../src/assets/fonts/Open Sans.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +225,10 @@
 				9C36C07B35A04741988323F3 /* pkflag.png */,
 				2E4FD05D18E64A5C82A4715B /* Times New Roman.ttf */,
 				534E17B335BD4953A8A1F810 /* Alvi Nastaleeq.ttf */,
+				87BDECFBD5114991B86BD6E2 /* Caslon.ttf */,
+				DCB90D8BA9E9438C8B606F94 /* LibreCaslonText.ttf */,
+				44C294CC16334302AC514BDE /* Garamond.ttf */,
+				C596D844EF6F48C68122B5D8 /* Open Sans.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -377,6 +389,10 @@
 				56FF433200F44045A2FA2391 /* pkflag.png in Resources */,
 				9E2ECF3CBCC4407AAB78B4C7 /* Times New Roman.ttf in Resources */,
 				022D06CE3EAC4635A845C6E6 /* Alvi Nastaleeq.ttf in Resources */,
+				C41B02ED00464340B0CC6271 /* Caslon.ttf in Resources */,
+				A17549DBC2324D8DAC53166D /* LibreCaslonText.ttf in Resources */,
+				07D4738FC1CC46AEA96FB798 /* Garamond.ttf in Resources */,
+				6B44404B554047798BF0C17C /* Open Sans.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

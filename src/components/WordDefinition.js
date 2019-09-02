@@ -3,7 +3,7 @@ import { Text, View, StyleSheet, ScrollView, Dimensions } from "react-native";
 import * as Animatable from "react-native-animatable";
 import Icon from "react-native-vector-icons/Entypo";
 const phone_height = Dimensions.get("window").height;
-const drawer_height = phone_height * 0.25;
+const drawer_height = phone_height * 0.3;
 export default class WordDefinition extends React.Component {
   render() {
     return (

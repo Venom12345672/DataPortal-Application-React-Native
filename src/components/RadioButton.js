@@ -9,7 +9,7 @@ export default class RadioButton extends React.Component {
     const { value } = this.props;
     return (
       <TouchableOpacity style={styles.mainContainer} onPress={() => {this.props.selectionHandler(value)}}>
-        <View style={{ width: "95%" }}>
+        <View style={{ width: "90%" }}>
           <Text style={styles.headingStyle}>{this.props.title}</Text>
         </View>
         <View>

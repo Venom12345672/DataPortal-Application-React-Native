@@ -14,6 +14,9 @@ export default class MainScreen extends React.Component {
     this.props.navigation.navigate("ChangeLanguage");
   };
 
+  changeFontStyleHandler = () => {
+    this.props.navigation.navigate("FontStyles")
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -35,6 +38,8 @@ export default class MainScreen extends React.Component {
             onPressing={this.fontSettignsHandler}
           />
           <SubSettingsContainer title="Content Language" onPressing={this.changeSettingsHandler}/>
+          <SubSettingsContainer title="Content Font" onPressing={this.changeFontStyleHandler}/>
+
         </View>
       </View>
     );
