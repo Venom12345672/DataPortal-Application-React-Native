@@ -1,39 +1,40 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { View, StyleSheet, Text, Dimensions } from "react-native";
 import SampleText from "./SampleText";
 import Carousel from "react-native-carousel-view";
 import Settings from "./settings.json";
 import * as Animatable from "react-native-animatable";
+import { Icon } from "react-native-elements";
 
 const phone_width = Dimensions.get("window").width;
 const phone_height = Dimensions.get("window").height;
 export default class FontStyles extends React.Component {
   state = {
-    fontFamily: Settings.currentFontOptions,
+    fontFamily: Settings.currentFontOptions
   };
 
   renderFontList = () =>
-    this.state.fontFamily.map(x => (
+    this.state.fontFamily.map((x,index) => (
       <View style={{ alignItems: "center", justifyContent: "center" }}>
-        <Text style={styles.descriptionStyling}>{x}</Text>
+        <Text style={[styles.descriptionStyling,{fontFamily: this.state.fontFamily[index]}]}>{x}</Text>
       </View>
     ));
-  swap = (a,number) => {
-    let temp = Settings.currentFontOptions[0]
-    Settings.currentFontOptions[0] = Settings.currentFontOptions[number]
-    Settings.currentFontOptions[number] = temp
-  }
+  swap = (a, number) => {
+    let temp = Settings.currentFontOptions[0];
+    Settings.currentFontOptions[0] = Settings.currentFontOptions[number];
+    Settings.currentFontOptions[number] = temp;
+  };
   render() {
     return (
       <View style={styles.container}>
         <Animatable.View
           animation="slideInRight"
-          duration={400}
+          duration={600}
           style={styles.borderContainer}
         >
           <SampleText />
         </Animatable.View>
-        <View style={{ backgroundColor: "#e4e4e4" }}>
+        <View >
           <Carousel
             width={phone_width}
             height={phone_height * 0.18}
@@ -42,7 +43,7 @@ export default class FontStyles extends React.Component {
             animate={false}
             onPageChange={number => {
               Settings.currentFont = this.state.fontFamily[number];
-              this.setState({ });
+              this.setState({});
             }}
           >
             {this.renderFontList()}

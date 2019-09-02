@@ -83,7 +83,7 @@ export default class FontSettings extends React.Component {
         <View style={styles.borderContainer}>
           <SampleText />
         </View>
-        <View style={{backgroundColor: '#e4e4e4'}}>
+        <View >
           <Carousel
             width={phone_width}
             height={phone_height * 0.18}
