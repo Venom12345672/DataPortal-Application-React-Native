@@ -13,13 +13,39 @@ export default class FontStyles extends React.Component {
     fontFamily: Settings.currentFontOptions
   };
 
+  componentWillUnmount() {
+    Settings.currentFontOptions.map((x, index) => {
+      if (x == Settings.currentFont) {
+        this.swap(index);
+      }
+    });
+  }
+  font = (left, right, x, index) => (
+    <View style={styles.listStyling}>
+      <Icon name="chevron-left" size={50} color={left} />
+      <Text
+        style={[
+          styles.descriptionStyling,
+          { fontFamily: this.state.fontFamily[index] }
+        ]}
+      >
+        {x}
+      </Text>
+      <Icon name="chevron-right" size={50} color={right} />
+    </View>
+  );
+
   renderFontList = () =>
-    this.state.fontFamily.map((x,index) => (
-      <View style={{ alignItems: "center", justifyContent: "center" }}>
-        <Text style={[styles.descriptionStyling,{fontFamily: this.state.fontFamily[index]}]}>{x}</Text>
-      </View>
-    ));
-  swap = (a, number) => {
+    this.state.fontFamily.map((x, index) => {
+      if (index == 0) {
+        return this.font("white","black", x, index);
+      } else if (index == this.state.fontFamily.length - 1) {
+        return this.font("black", "white", x, index);
+      } else {
+        return this.font("black", "black", x, index);
+      }
+    });
+  swap = number => {
     let temp = Settings.currentFontOptions[0];
     Settings.currentFontOptions[0] = Settings.currentFontOptions[number];
     Settings.currentFontOptions[number] = temp;
@@ -29,12 +55,12 @@ export default class FontStyles extends React.Component {
       <View style={styles.container}>
         <Animatable.View
           animation="slideInRight"
-          duration={600}
+          duration={400}
           style={styles.borderContainer}
         >
           <SampleText />
         </Animatable.View>
-        <View >
+        <View>
           <Carousel
             width={phone_width}
             height={phone_height * 0.18}
@@ -72,5 +98,10 @@ const styles = StyleSheet.create({
   descriptionStyling: {
     color: "#01411cff",
     fontSize: 24
+  },
+  listStyling: {
+    alignItems: "center",
+    justifyContent: "space-between",
+    flexDirection: "row"
   }
 });

@@ -29,5 +29,7 @@
       "defaultLineHeightEnglish" : 25,
       "defaultLineHeightUrdu" : 30,
       "englishFonts":  ["Roboto","Caslon","Open Sans"],
-      "urduFonts": ["Alvi Nastaleeq", "BBC Urdu"]
+      "urduFonts": ["Alvi Nastaleeq", "BBC Urdu"],
+      "fontContrast": [["#292826","#F9D342"],["#4831D4","#CCF381"]],
+      "currentContrast": ["white","black"]
     }

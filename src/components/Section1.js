@@ -2,14 +2,9 @@ import React, { Fragment } from "react";
 import {
   Text,
   View,
-  StyleSheet,
   ScrollView,
-  Image,
   ImageBackground,
   Dimensions,
-  TouchableHighlight,
-  TouchableOpacity,
-  ToastAndroid,
   TouchableWithoutFeedback
 } from "react-native";
 const phone_width = Dimensions.get("window").width;
@@ -20,8 +15,8 @@ import { sectionStyles } from "./SectionStyling";
 import Icon from "react-native-vector-icons/Foundation";
 import ContentControlPanel from "./ContentControlPanel";
 import Sound from "react-native-sound";
-import WordDefiniton from "./WordDefinition";
 import WordDefinition from "./WordDefinition";
+
 export default class Section1 extends React.Component {
   sound = [
     new Sound("tone_1.mp3"),
@@ -89,12 +84,12 @@ export default class Section1 extends React.Component {
               defWord: this.removeCh(word)
             })
           }
-          style={{ fontWeight: "bold" }}
+          style={{ fontWeight: "bold", color: Settings.currentContrast[1] }}
         >
           {word + " "}
         </Text>
       ) : (
-        <Text>{word + " "}</Text>
+        <Text style={{ color: Settings.currentContrast[1] }}>{word + " "}</Text>
       )
     );
   };
@@ -118,6 +113,11 @@ export default class Section1 extends React.Component {
   _toggleSwitch = () => {
     this.setState({ nightMode: !this.state.nightMode });
     this.props.navigation.setParams({ nightMode: !this.state.nightMode });
+    if (!this.state.nightMode) {
+      Settings.currentContrast = ["black", "white"];
+    } else {
+      Settings.currentContrast = ["white", "black"];
+    }
   };
 
   _onLongPress = index => {
@@ -155,12 +155,11 @@ export default class Section1 extends React.Component {
     return (
       <View
         style={[
-          this.state.nightMode
-            ? sectionStyles.mainContainerN
-            : sectionStyles.mainContainerL,
+          sectionStyles.mainContainerL,
           this.state.showDefinition
             ? { backgroundColor: "rgba(0, 0, 0, 0.7)" }
-            : null
+            : null,
+          { backgroundColor: Settings.currentContrast[0] }
         ]}
       >
         <ScrollView>
@@ -171,14 +170,12 @@ export default class Section1 extends React.Component {
           >
             <Fragment>
               <Text
-                selectable={true}
                 style={[
-                  this.state.nightMode
-                    ? sectionStyles.headingStyleN
-                    : sectionStyles.headingStyleL,
+                  sectionStyles.headingStyleL,
                   {
                     fontSize: this.state.headingFont,
-                    lineHeight: this.state.lineHeight
+                    lineHeight: this.state.lineHeight,
+                    color: Settings.currentContrast[1]
                   }
                 ]}
               >
@@ -189,9 +186,7 @@ export default class Section1 extends React.Component {
               >
                 <Text
                   style={[
-                    this.state.nightMode
-                      ? sectionStyles.contentTextStyleN
-                      : sectionStyles.contentTextStyleL,
+                    sectionStyles.contentTextStyleL,
                     {
                       fontSize: this.state.contentFont,
                       lineHeight: this.state.lineHeight
@@ -209,9 +204,7 @@ export default class Section1 extends React.Component {
               >
                 <Text
                   style={[
-                    this.state.nightMode
-                      ? sectionStyles.contentTextStyleN
-                      : sectionStyles.contentTextStyleL,
+                    sectionStyles.contentTextStyleL,
                     {
                       fontSize: this.state.contentFont,
                       lineHeight: this.state.lineHeight
@@ -259,9 +252,7 @@ export default class Section1 extends React.Component {
               >
                 <Text
                   style={[
-                    this.state.nightMode
-                      ? sectionStyles.contentTextStyleN
-                      : sectionStyles.contentTextStyleL,
+                    sectionStyles.contentTextStyleL,
                     {
                       fontSize: this.state.contentFont,
                       lineHeight: this.state.lineHeight
@@ -279,13 +270,10 @@ export default class Section1 extends React.Component {
               >
                 <Text
                   style={[
-                    this.state.nightMode
-                      ? sectionStyles.contentTextStyleN
-                      : sectionStyles.contentTextStyleL,
+                    sectionStyles.contentTextStyleL,
                     {
                       fontSize: this.state.contentFont,
                       lineHeight: this.state.lineHeight
-                      // marginBottom: 50
                     }
                   ]}
                 >
@@ -297,7 +285,7 @@ export default class Section1 extends React.Component {
               </TouchableWithoutFeedback>
             </Fragment>
           </View>
-          <ImageBackground style={sectionStyles.footerStyle} />
+          {/* <ImageBackground style={sectionStyles.footerStyle} /> */}
         </ScrollView>
         <ContentControlPanel refreshContent={this.refreshContent} />
         {this.state.showDefinition ? (

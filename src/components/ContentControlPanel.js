@@ -6,7 +6,7 @@ import Carousel from "react-native-carousel-view";
 import FontAdjuster from "./FontAdjuster";
 import LineHeight from "./LineHeight";
 import Settings from "./settings.json";
-
+import FontContrastSelection from "./FontContrastSelection";
 const phone_width = Dimensions.get("window").width;
 const phone_height = Dimensions.get("window").height;
 const drawer_height = phone_height * 0.3;
@@ -70,6 +70,16 @@ export default class Section1 extends Component {
     });
     this.props.refreshContent();
   };
+  renderFontContrast = () =>
+    Settings.fontContrast.map(colors => {
+      return (
+        <FontContrastSelection
+          backgroundColor={colors[0]}
+          fontColor={colors[1]}
+          refresh = {this.props.refreshContent}
+        />
+      );
+    });
   render() {
     return (
       <SlidingUpPanel
@@ -90,6 +100,16 @@ export default class Section1 extends Component {
             </View>
             <View>
               <LineHeight lineHeightChange={this.lineHeightChangeHandler} />
+            </View>
+            <View
+              style={{
+                justifyContent: "space-between",
+                alignItems: "center",
+                flexDirection: "row",
+                width: "50%"
+              }}
+            >
+              {this.renderFontContrast()}
             </View>
           </Carousel>
         </View>
