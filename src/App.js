@@ -42,7 +42,7 @@ export const MainNavigator = createStackNavigator({
     screen: SubCategoryPage,
     navigationOptions: {
       headerStyle: {
-        backgroundColor: "#01411cff"
+        backgroundColor: "#4AAA83"
       },
       headerTintColor: "white"
     }
@@ -52,7 +52,7 @@ export const MainNavigator = createStackNavigator({
     navigationOptions: {
       title: "Font Size",
       headerStyle: {
-        backgroundColor: "#01411cff"
+        backgroundColor: "#4AAA83"
       },
       headerTintColor: "white"
     }
@@ -62,7 +62,7 @@ export const MainNavigator = createStackNavigator({
     navigationOptions: {
       title: "Content Language",
       headerStyle: {
-        backgroundColor: "#01411cff"
+        backgroundColor: "#4AAA83"
       },
       headerTintColor: "white"
     }
@@ -72,7 +72,7 @@ export const MainNavigator = createStackNavigator({
     navigationOptions: {
       title: "Section 1",
       headerStyle: {
-        backgroundColor: "#01411cff"
+        backgroundColor: "#4AAA83"
       },
       headerTintColor: "white"
     }
@@ -82,7 +82,7 @@ export const MainNavigator = createStackNavigator({
     navigationOptions: {
       title: "Section 2",
       headerStyle: {
-        backgroundColor: "#01411cff"
+        backgroundColor: "#4AAA83"
       },
       headerTintColor: "white"
     }
@@ -92,7 +92,7 @@ export const MainNavigator = createStackNavigator({
     navigationOptions: {
       title: "Font Styles",
       headerStyle: {
-        backgroundColor: "#01411cff"
+        backgroundColor: "#4AAA83"
       },
       headerTintColor: "white"
     }

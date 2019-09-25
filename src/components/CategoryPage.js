@@ -10,19 +10,12 @@ export default class MainScreen extends React.Component {
   state = {
     search: "",
     categoryNames: [
-      { key: "Devin" },
-      { key: "Alice" },
-      { key: "Hamzah" },
-      { key: "Ramis" },
-      { key: "Rania" },
-      { key: "Ali" },
-      { key: "Maham" },
-      { key: "Minhal" },
-      { key: "Umer" },
-      { key: "George" },
-      { key: "Tayyab" },
-      { key: "Shahzaib" },
-      { key: "Saadi" }
+      "Dyslexia",
+      "Autism",
+      "Alheimer's",
+      "Schizophrenia",
+      "Epilepsy",
+      "ADHD"
     ],
     filteredData: [],
     headerVisible: true
@@ -43,7 +36,7 @@ export default class MainScreen extends React.Component {
   };
 
   changeStateHandler = data => {
-    this.setState({filteredData: data})
+    this.setState({ filteredData: data });
   };
 
   header = (
@@ -59,7 +52,7 @@ export default class MainScreen extends React.Component {
             name="search"
             color="white"
             size={35}
-            onPress={() => this.setState({ headerVisible: false,  })}
+            onPress={() => this.setState({ headerVisible: false })}
           />
         }
       />
@@ -78,11 +71,12 @@ export default class MainScreen extends React.Component {
       <View style={styles.container}>
         {this.state.headerVisible ? this.header : this.search}
 
-        <View style={styles.subContainer}>
+        <View>
           <CategoryList
             data={
-              this.state.headerVisible ?
-                this.state.categoryNames : this.state.filteredData
+              this.state.headerVisible
+                ? this.state.categoryNames
+                : this.state.filteredData
             }
             onItemSelected={this.categorySelectedHandler}
             color={null}
@@ -98,8 +92,5 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     alignItems: "stretch"
-  },
-  subContainer: {
-    padding: 15
   }
 });

@@ -18,7 +18,7 @@ export default class SubSettingsContainer extends React.Component {
             <Text style={styles.headingStyle}>{this.props.title}</Text>
           </View>
           <View>
-            <Icon name="chevron-right" size={35} color="#E4e4e4" />
+            <Icon name="chevron-right" size={35} color="#4AAA83" />
           </View>
         </TouchableOpacity>
       </View>
@@ -28,14 +28,11 @@ export default class SubSettingsContainer extends React.Component {
 
 const styles = StyleSheet.create({
   mainContainer: {
-    // marginTop: 20,
     height: "10%",
     width: "90%",
     backgroundColor: "white",
-    borderTopWidth: 1,
     borderBottomWidth: 1,
     borderBottomColor: "#e4e4e4",
-    borderTopColor: "#e4e4e4"
   },
   buttonStyling: {
     height: "100%",
@@ -44,7 +41,7 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   headingStyle: {
-    fontSize: 18
+    fontSize: 18,
   },
   sliderContainer: {
     flexDirection: "column",

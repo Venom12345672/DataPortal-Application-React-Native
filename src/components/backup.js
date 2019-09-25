@@ -1,172 +1,105 @@
 import React from "react";
-import {
-  Text,
-  View,
-  StyleSheet,
-  ScrollView,
-  Image,
-  ImageBackground,
-  Dimensions
-} from "react-native";
+import { View, StyleSheet, Text } from "react-native";
 
-const phone_width = Dimensions.get("window").width;
-import Settings from "./settings.json";
-
-import Carousel from "react-native-carousel-view";
-import ToggleSwitch from "toggle-switch-react-native";
-import { sectionStyles } from "./SectionStyling";
-import Icon from "react-native-vector-icons/Foundation";
-
-export default class Section1 extends React.Component {
+import CategoryList from "./CategoryList";
+import SearchItem from "./SearchItem";
+import { Icon } from "react-native-elements";
+import * as Animatable from "react-native-animatable";
+import Header from "./Header";
+export default class MainScreen extends React.Component {
   state = {
-    nightMode: false
+    search: "",
+    categoryNames: [
+      { key: "Devin" },
+      { key: "Alice" },
+      { key: "Hamzah" },
+      { key: "Ramis" },
+      { key: "Rania" },
+      { key: "Ali" },
+      { key: "Maham" },
+      { key: "Minhal" },
+      { key: "Umer" },
+      { key: "George" },
+      { key: "Tayyab" },
+      { key: "Shahzaib" },
+      { key: "Saadi" }
+    ],
+    filteredData: [],
+    headerVisible: true
   };
 
-  static navigationOptions = ({ navigation }) => {
-    return {
-      headerRight: (
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-            paddingHorizontal: 10
-          }}
-        >
-          <View style={{ paddingRight: 5 }}>
-            <Icon
-              name="contrast"
-              size={30}
-              color={navigation.getParam("nightMode") ? "black" : "white"}
-            />
-          </View>
-          <ToggleSwitch
-            isOn={navigation.getParam("nightMode")}
-            onColor="green"
-            labelStyle={{ color: "black", fontWeight: "900" }}
-            onToggle={navigation.getParam("ToggleSwitch")}
+  categorySelectedHandler = (key, color) => {
+    this.props.navigation.navigate("SubCategories", {
+      data: key,
+      color: color
+    });
+  };
+
+  renderResults = () => {
+    this.setState({
+      headerVisible: true,
+      filteredData: []
+    });
+  };
+
+  changeStateHandler = data => {
+    this.setState({filteredData: data})
+  };
+
+  header = (
+    <Animatable.View animation="slideInDown" duration={400}>
+      <Header
+        leftComponent={
+          <Text style={{ paddingHorizontal: 10, color: "white", fontSize: 24 }}>
+            Home
+          </Text>
+        }
+        rightComponenet={
+          <Icon
+            name="search"
+            color="white"
+            size={35}
+            onPress={() => this.setState({ headerVisible: false,  })}
           />
-        </View>
-      )
-    };
-  };
-  componentDidMount() {
-    this.props.navigation.setParams({ ToggleSwitch: this._toggleSwitch });
-    this.props.navigation.setParams({ nightMode: this.state.nightMode });
-  }
+        }
+      />
+    </Animatable.View>
+  );
 
-  _toggleSwitch = () => {
-    this.setState({ nightMode: !this.state.nightMode });
-    this.props.navigation.setParams({ nightMode: !this.state.nightMode });
-  };
+  search = (
+    <SearchItem
+      data={this.state.categoryNames}
+      changeState={this.changeStateHandler}
+      backtoHome={this.renderResults}
+    />
+  );
   render() {
     return (
-      <View
-        style={
-          this.state.nightMode
-            ? sectionStyles.mainContainerN
-            : sectionStyles.mainContainerL
-        }
-      >
-        <ScrollView>
-          <View
-            style={{
-              paddingHorizontal: 20
-            }}
-          >
-            <Text
-              style={[
-                this.state.nightMode
-                  ? sectionStyles.headingStyleN
-                  : sectionStyles.headingStyleL,
-                {
-                  fontSize: Settings.currentSettingsEnglish[3],
-                  lineHeight: Settings.currentLineHeightEnglish
-                }
-              ]}
-            >
-              Signs in Autistic Children
-            </Text>
-            <Text
-              style={[
-                this.state.nightMode
-                  ? sectionStyles.contentTextStyleN
-                  : sectionStyles.contentTextStyleL,
-                {
-                  fontSize: Settings.currentSettingsEnglish[1],
-                  lineHeight: Settings.currentLineHeightEnglish
-                }
-              ]}
-            >
-              Autsim, or autsim spectrum disorder (ASD), refers to a broad range
-              of conditions characterized by challenges with social skills,
-              repetitive behaviors, speech and nonverbal communcitaion.
-              According to the Centers for Disease Control, autism affects an
-              estimated 1 in 59 children in United States today.{"\n\n"}
-              We know that there is not one autism but many subtypes, most
-              influenced by a combinatiopn of genetic and environmental factors.
-              Because autism is a spectrum disorder, each person with autism has
-              a distinct set of strenghts and challenges. The ways in which
-              people with autism learn, thiink and problem-solve can range from
-              highly killed to severely challenged. Some people with ASD may
-              require significiant support in thier daily lives, while others
-              may need less support and, in some cases, live entirely
-              independently.
-              {"\n"}
-            </Text>
-            <View style={{ alignItems: "center", justifyContent: "center" }}>
-              <Carousel
-                width={phone_width * 0.9}
-                indicatorAtBottom={true}
-                animate={false}
-              >
-                <ImageBackground style={{ backgroundColor: "#01411cff" }} />
-                <ImageBackground style={{ backgroundColor: "blue" }} />
-                <ImageBackground style={{ backgroundColor: "grey" }} />
-              </Carousel>
-            </View>
-            <Text
-              style={[
-                sectionStyles.descriptionStyle,
-                {
-                  fontSize: Settings.currentSettingsEnglish[0],
-                  lineHeight: Settings.currentLineHeightEnglish
-                }
-              ]}
-            >
-              "If you've met one person with autism, you've met one person with
-              autism"
-            </Text>
-            <Text
-              style={[
-                this.state.nightMode
-                  ? sectionStyles.contentTextStyleN
-                  : sectionStyles.contentTextStyleL,
-                {
-                  fontSize: Settings.currentSettingsEnglish[1],
-                  lineHeight: Settings.currentLineHeightEnglish
-                }
-              ]}
-            >
-              Autsim, or autsim spectrum disorder (ASD), refers to a broad range
-              of conditions characterized by challenges with social skills,
-              repetitive behaviors, speech and nonverbal communcitaion.
-              According to the Centers for Disease Control, autism affects an
-              estimated 1 in 59 children in United States today.{"\n\n"}
-              We know that there is not one autism but many subtypes, most
-              influenced by a combinatiopn of genetic and environmental factors.
-              Because autism is a spectrum disorder, each person with autism has
-              a distinct set of strenghts and challenges. The ways in which
-              people with autism learn, thiink and problem-solve can range from
-              highly killed to severely challenged. Some people with ASD may
-              require significiant support in thier daily lives, while others
-              may need less support and, in some cases, live entirely
-              independently.{"\n"}
-            </Text>
-          </View>
+      <View style={styles.container}>
+        {this.state.headerVisible ? this.header : this.search}
 
-          <ImageBackground style={sectionStyles.footerStyle} />
-        </ScrollView>
+        <View style={styles.subContainer}>
+          <CategoryList
+            data={
+              this.state.headerVisible ?
+                this.state.categoryNames : this.state.filteredData
+            }
+            onItemSelected={this.categorySelectedHandler}
+            color={null}
+          />
+        </View>
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: "column",
+    alignItems: "stretch"
+  },
+  subContainer: {
+    padding: 15
+  }
+});
