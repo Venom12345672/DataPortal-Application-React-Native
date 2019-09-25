@@ -76,7 +76,7 @@ export default class SearchItem extends React.Component {
 const styles = StyleSheet.create({
   mainContainer: {
     height: 70,
-    backgroundColor: "#01411cff",
+    backgroundColor: "#4AAA83",
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",

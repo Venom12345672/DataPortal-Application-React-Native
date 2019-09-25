@@ -84,12 +84,8 @@ const styles = StyleSheet.create({
     borderTopColor: "#e4e4e4"
   },
   borderContainer: {
-    width: "90%",
+    width: "100%",
     height: "78%",
     marginTop: 10,
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
-    borderBottomColor: "#e4e4e4",
-    borderTopColor: "#e4e4e4"
   }
 });

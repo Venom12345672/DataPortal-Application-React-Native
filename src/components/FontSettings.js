@@ -17,13 +17,6 @@ import RadioButton from "./RadioButton";
 const phone_width = Dimensions.get("window").width;
 const phone_height = Dimensions.get("window").height;
 export default class FontSettings extends React.Component {
-  state = {
-    // currentSettings: [],
-    // currentLineHeight: 0,
-    // fontSliderValue: 1,
-    // lineHeightValue: 1
-  };
-
   componentDidMount() {
     data = null;
     data2 = null;
@@ -35,12 +28,6 @@ export default class FontSettings extends React.Component {
     }
     value = Settings.fontSliderValue;
     value2 = Settings.lineHeightSliderValue;
-    // this.setState({
-    //   currentSettings: data,
-    //   currentLineHeight: data2,
-    //   fontSliderValue: value,
-    //   lineHeightValue: value2
-    // });
   }
 
   fontChnageHandler = cond => {
@@ -53,10 +40,6 @@ export default class FontSettings extends React.Component {
       Settings.currentSettingsUrdu = data;
     }
     Settings.fontSliderValue = cond;
-    // this.setState({
-    //   currentSettings: data,
-    //   fontSliderValue: cond
-    // });
     this.setState({})
   };
 
@@ -70,10 +53,6 @@ export default class FontSettings extends React.Component {
       Settings.currentLineHeightUrdu = data;
     }
     Settings.lineHeightSliderValue = cond;
-    // this.setState({
-    //   currentLineHeight: data,
-    //   lineHeightValue: cond
-    // });
     this.setState({})
   };
 
@@ -112,12 +91,9 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   borderContainer: {
-    width: "90%",
+    width: "100%",
     height: "78%",
     marginTop: 10,
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
-    borderBottomColor: "#e4e4e4",
-    borderTopColor: "#e4e4e4"
+  
   }
 });

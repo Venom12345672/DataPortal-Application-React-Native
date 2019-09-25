@@ -132,7 +132,9 @@ export default class SampleText extends React.Component {
     this.refreshContent();
     return (
       <ScrollView style={styles.scrollView}>
-        {this.state.renderContent}
+        <View style={styles.sampleTextContainer}>
+          {this.state.renderContent}
+        </View>
       </ScrollView>
     );
   }
@@ -141,5 +143,14 @@ export default class SampleText extends React.Component {
 const styles = StyleSheet.create({
   scrollView: {
     paddingTop: 10
+  },
+  sampleTextContainer: {
+    width: "90%",
+    height: "100%",
+    alignSelf: "center",
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
+    borderBottomColor: "#e4e4e4",
+    borderTopColor: "#e4e4e4"
   }
 });

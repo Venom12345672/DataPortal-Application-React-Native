@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, ScrollView } from "react-native";
 
 import CategoryList from "./CategoryList";
 import SearchItem from "./SearchItem";
@@ -21,7 +21,7 @@ export default class MainScreen extends React.Component {
     headerVisible: true
   };
 
-  categorySelectedHandler = (index) => {
+  categorySelectedHandler = index => {
     this.props.navigation.navigate("SubCategories", {
       data: this.state.categoryNames[index]
     });
@@ -89,7 +89,6 @@ export default class MainScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: "column",
-    alignItems: "stretch"
+    flexDirection: "column"
   }
 });

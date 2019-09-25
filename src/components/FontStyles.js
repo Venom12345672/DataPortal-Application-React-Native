@@ -38,7 +38,7 @@ export default class FontStyles extends React.Component {
   renderFontList = () =>
     this.state.fontFamily.map((x, index) => {
       if (index == 0) {
-        return this.font("white","#4AAA83", x, index);
+        return this.font("white", "#4AAA83", x, index);
       } else if (index == this.state.fontFamily.length - 1) {
         return this.font("#4AAA83", "white", x, index);
       } else {
@@ -87,13 +87,11 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   borderContainer: {
-    width: "90%",
+    width: "100%",
     height: "78%",
     marginTop: 10,
-    borderTopWidth: 1,
     borderBottomWidth: 1,
-    borderBottomColor: "#e4e4e4",
-    borderTopColor: "#e4e4e4"
+    borderBottomColor: "#e4e4e4"
   },
   descriptionStyling: {
     color: "#01411cff",
