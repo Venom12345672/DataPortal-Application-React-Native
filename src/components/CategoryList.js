@@ -15,16 +15,40 @@ const categoryList = props => {
   return (
     <View style={styles.container}>
       <View style={{ flexDirection: "row" }}>
-        <CategoryBox onItemPressed={props.onItemSelected} title={props.data[0]}/>
-        <CategoryBox onItemPressed={props.onItemSelected} title={props.data[1]}/>
+        <CategoryBox
+          onItemPressed={()=>props.onItemSelected(0)}
+          title={props.data[0]}
+          img="Dyslexia"
+        />
+        <CategoryBox
+          onItemPressed={()=>props.onItemSelected(1)}
+          title={props.data[1]}
+          img="Alzheimer"
+        />
       </View>
       <View style={{ flexDirection: "row" }}>
-      <CategoryBox onItemPressed={props.onItemSelected} title={props.data[2]}/>
-      <CategoryBox onItemPressed={props.onItemSelected} title={props.data[3]}/>
+        <CategoryBox
+          onItemPressed={()=>props.onItemSelected(2)}
+          title={props.data[2]}
+          img="Autism"
+        />
+        <CategoryBox
+          onItemPressed={()=>props.onItemSelected(3)}
+          title={props.data[3]}
+          img="Schizophrenia"
+        />
       </View>
       <View style={{ flexDirection: "row" }}>
-      <CategoryBox onItemPressed={props.onItemSelected} title={props.data[4]}/>
-      <CategoryBox onItemPressed={props.onItemSelected} title={props.data[5]}/>
+        <CategoryBox
+          onItemPressed={()=>props.onItemSelected(4)}
+          title={props.data[4]}
+          img="Epilepsy"
+        />
+        <CategoryBox
+          onItemPressed={()=>props.onItemSelected(5)}
+          title={props.data[5]}
+          img="ADHD"
+        />
       </View>
     </View>
   );

@@ -11,8 +11,8 @@ export default class MainScreen extends React.Component {
     search: "",
     categoryNames: [
       "Dyslexia",
+      "Alzheimer's",
       "Autism",
-      "Alheimer's",
       "Schizophrenia",
       "Epilepsy",
       "ADHD"
@@ -21,10 +21,9 @@ export default class MainScreen extends React.Component {
     headerVisible: true
   };
 
-  categorySelectedHandler = (key, color) => {
+  categorySelectedHandler = (index) => {
     this.props.navigation.navigate("SubCategories", {
-      data: key,
-      color: color
+      data: this.state.categoryNames[index]
     });
   };
 

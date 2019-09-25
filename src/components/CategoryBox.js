@@ -10,18 +10,26 @@ import {
 
 export default class CategoryBox extends React.Component {
   render() {
+    const images = {
+      Dyslexia: require("../assets/Dyslexia.png"),
+      Autism: require("../assets/Autism.png"),
+      ADHD: require("../assets/ADHD.png"),
+      Alzheimer: require("../assets/Alzheimer.png"),
+      Epilepsy: require("../assets/Epilepsy.png"),
+      Schizophrenia: require("../assets/Schizophrenia.png")
+    };
     return (
       <TouchableOpacity
         onPress={this.props.onItemPressed}
-        style={styles.container}
+        style={[styles.container]}
       >
         <View style={styles.imageContainer}>
           <Image
             style={{
-              height: 100,
-              width: 100
+              height: 80,
+              width: 80
             }}
-            source={require("../assets/Dyslexia.png")}
+            source={images[this.props.img]}
           ></Image>
         </View>
         <View style={styles.textContainer}>
@@ -36,12 +44,14 @@ export default class CategoryBox extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    margin: 10,
+    margin: 8,
     backgroundColor: "#F8F8F8",
     height: 170,
-    width: 170,
+    width: 150,
     borderColor: "#4AAA83",
-    borderWidth: 1
+    borderWidth: 1,
+    elevation: 8,
+    borderTopLeftRadius: 15
   },
   imageContainer: {
     height: "70%",
@@ -56,6 +66,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     position: "absolute",
-    bottom: 0
+    bottom: 0,
   }
 });

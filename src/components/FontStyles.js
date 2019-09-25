@@ -38,11 +38,11 @@ export default class FontStyles extends React.Component {
   renderFontList = () =>
     this.state.fontFamily.map((x, index) => {
       if (index == 0) {
-        return this.font("white","black", x, index);
+        return this.font("white","#4AAA83", x, index);
       } else if (index == this.state.fontFamily.length - 1) {
-        return this.font("black", "white", x, index);
+        return this.font("#4AAA83", "white", x, index);
       } else {
-        return this.font("black", "black", x, index);
+        return this.font("#4AAA83", "#4AAA83", x, index);
       }
     });
   swap = number => {
