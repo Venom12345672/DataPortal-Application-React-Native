@@ -4,7 +4,7 @@
 Doing all development part myself. Technologies used are mentioned below
 
 ## Description
-Open data portal for Pakistan where people of Pakistan can come and read and gain awareness about different disorders like Autism, Depression,
+Open data portal for Pakistan where people of Pakistan can come, read and gain awareness about different disorders like Autism, Depression,
 Dyslexia, Epilepsy, ADHD etc.
 
 ## Technologies Used
